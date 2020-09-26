@@ -1,0 +1,25 @@
+
+<%= simple_form_for(@orden_trabajo) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :trnum %>
+    <%= f.input :trcan %>
+    <%= f.input :trcar %>
+    <%= f.input :clinom %>
+    <%= f.input :papel %>
+    <%= f.input :gramaje %>
+    <%= f.input :colores %>
+    <%= f.input :pliego %>
+    <%= f.input :nomprod %>
+    <%= f.input :fecentr %>
+    <%= f.input :cam10 %>
+    <%= f.input :cam12 %>
+    <%= f.input :cam24 %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

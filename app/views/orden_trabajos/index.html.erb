@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Orden Trabajos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Trnum</th>
+      <th>Trcan</th>
+      <th>Trcar</th>
+      <th>Clinom</th>
+      <th>Papel</th>
+      <th>Gramaje</th>
+      <th>Colores</th>
+      <th>Pliego</th>
+      <th>Nomprod</th>
+      <th>Fecentr</th>
+      <th>Cam10</th>
+      <th>Cam12</th>
+      <th>Cam24</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orden_trabajos.each do |orden_trabajo| %>
+      <tr>
+        <td><%= orden_trabajo.trnum %></td>
+        <td><%= orden_trabajo.trcan %></td>
+        <td><%= orden_trabajo.trcar %></td>
+        <td><%= orden_trabajo.clinom %></td>
+        <td><%= orden_trabajo.papel %></td>
+        <td><%= orden_trabajo.gramaje %></td>
+        <td><%= orden_trabajo.colores %></td>
+        <td><%= orden_trabajo.pliego %></td>
+        <td><%= orden_trabajo.nomprod %></td>
+        <td><%= orden_trabajo.fecentr %></td>
+        <td><%= orden_trabajo.cam10 %></td>
+        <td><%= orden_trabajo.cam12 %></td>
+        <td><%= orden_trabajo.cam24 %></td>
+        <td><%= link_to 'Show', orden_trabajo %></td>
+        <td><%= link_to 'Edit', edit_orden_trabajo_path(orden_trabajo) %></td>
+        <td><%= link_to 'Destroy', orden_trabajo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Orden Trabajo', new_orden_trabajo_path %>
