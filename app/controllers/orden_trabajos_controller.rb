@@ -5,6 +5,7 @@ class OrdenTrabajosController < ApplicationController
 
   # GET /orden_trabajos
   # GET /orden_trabajos.json
+
 def index
     @orden_trabajos = OrdenTrabajo.all.order('clinom ASC')
     respond_to do |format|
@@ -37,7 +38,27 @@ def index
       end
 
     end
+
+
+  def listado
+    @orden_trabajos = OrdenTrabajo.all.order('clinom ASC')
+    respond_to do |format|
+      format.html # index.html.erb
+      format.js # index.js.erb
+      format.json { render json: @orden_trabajos}
+
+      format.xlsx {
+        response.headers['Content-Disposition'] = "attachment; filename = Listado_ordenes_trabajo.xlsx"
+      }
+
+      format.pdf do
+        render pdf: 'listado/pdf', pdf: 'Listado',
+        :orientation => 'landscape'
+      end
+
+    end
   end
+
 
   # GET /orden_trabajos/1
   # GET /orden_trabajos/1.json
@@ -123,7 +144,6 @@ end
     def listado_trabajo
       @orden_trabajos = OrdenTrabajo.all.order('fecentr ASC')
     end
-
 
     def set_orden_trabajo
       @orden_trabajo = OrdenTrabajo.find(params[:id])

@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+<div class="d-flex justify-content-between mr-5 ml-2">
+  <div class="ml-3 mb-2"><h3>Listados de trabajos en el taller</h3></div>
+  <div><h3><%= link_to 'Descargar pdf', listado_path(format: 'pdf')  %></h3></div>
+  <div><h3><%= link_to 'Descargar Excel', listado_path(format: 'xlsx')  %></h3></div>
+  <div><h3><%= link_to 'Importar Excel', orden_trabajos_imports_new_path %></h3></div>
+
+
+
+</div>
+
+<!--Buscador Jquery-->
+<script>
+  $(document).ready(function(){
+  $("#buscador_datos").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#TablaOrdenesTrabajos tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<input class="ml-3 w-25" id="buscador_datos" type="text" placeholder="Buscar trabajo">
+<!--Fin buscador jquery-->
+
+
+<table class="table table-striped  m-2">
+  <thead>
+    <tr>
+      <th>Ot</th>
+      <th>Cliente</th>
+      <th>Producto</th>
+      <th>Post</th>
+      <th></th>
+      <th>Procesos</th>
+      <th>Fecha entrega</th>
+      <th>Observaciones</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+<!--Incio Tabla-->
+  <tbody id="TablaOrdenesTrabajos">
+    <% @orden_trabajos.each do |orden_trabajo| %>
+      <tr>
+        <td><%= link_to orden_trabajo.trnum, orden_trabajo %></td>
+        <td><%= link_to orden_trabajo.clinom, orden_trabajo %></td>
+        <td><%= link_to orden_trabajo.nomprod, orden_trabajo %></td>
+        <td><%= orden_trabajo.procesos %></td>
+        <td><%= orden_trabajo.fecentr%></td>
+        <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
+        <td><%= link_to 'Edit', edit_orden_trabajo_path(orden_trabajo)%></td>
+        <td><%= link_to 'Destroy', orden_trabajo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <!--Fin Tabla-->
+</table>

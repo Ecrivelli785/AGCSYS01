@@ -1,0 +1,42 @@
+Generate Model
+    rails new SISA01 -d postgresql
+
+    rails generate model OrdenTrabajo trnum:integer trcan:integer trcar:date clinom:string papel:string gramaje:integer colores:string pliego: integer nomprod:string fecentr:date cam10:string cam12:string cam24:string
+    
+
+	ELIMINAR UNA TABLA DESDE CONSOLA
+	class DropOrdenTrabajos < ActiveRecord::Migration[6.0]
+		def up 
+			drop_table :orden_trabajos 
+		end 
+		def down 
+			raise ActiveRecord::IrreversibleMigration 
+		end 
+	end
+
+
+	rails generate migration agregar_index_a_ordentrabajo
+		add_index :orden_trabajos, :trnum 
+	rails generate migration agregar_index_a_ordentrabajo
+		add_index :orden_trabajos, :clinom 
+	
+	rails db:create
+
+	rails db:migrate
+
+	#generando el modelo y controlador para importar excel
+
+	gem "roo", "~> 2.7.0"
+
+	#creando el controlador
+	rails generate controller OrdenTrabajosImports new create
+
+	#creando el modelo
+	touch app/models/orden_trabajos_import.rb
+
+	#comandos git
+	git checkout -b RAMAMARIOADIAZ
+	git add .
+	git status
+	git commit -m "IMPORTACION EXCEL NUEVO PROYECTO AGCSYS01"
+	git push origin RAMAMARIOADIAZ
