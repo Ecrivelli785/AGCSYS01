@@ -1,0 +1,23 @@
+wb = xlsx_package.workbook
+
+wb.styles do |style|
+  project_heading = style.add_style(b: true, sz: 14)
+  heading = style.add_style(b: true)
+
+  wb.add_worksheet(name: "Ordenes de Trabajo") do |sheet|
+    # Add a title row
+    sheet.add_row ["Listado de Ordenes de Trabajo"], style: project_heading
+    # Add the date this was downloaded
+    sheet.add_row ["Fecha de descarga", Time.now.strftime("%b %-d, %Y")]
+    # Add a blank row
+    sheet.add_row []
+    # Create the header row
+    sheet.add_row ["id", "ot", "cliente", "producto"], style: heading
+    # Create the database reference row
+    #sheet.add_row ["id", "ot", "cliente", "producto"], style: heading
+    # Create entries for each item
+    @orden_trabajos.each do |orden_trabajo|
+      sheet.add_row [orden_trabajo.id, orden_trabajo.ot, orden_trabajo.cliente, orden_trabajo.producto]
+    end
+  end
+end

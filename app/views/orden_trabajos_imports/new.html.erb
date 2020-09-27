@@ -1,0 +1,23 @@
+<h1>Importar ordenes de trabajos desde Excel</h1>
+
+<p>
+Solamente archivos con extension xlsx.
+</p>
+
+<h3>Requerimientos</h3>
+
+
+<h5>Seleccionar arhivo</h5>
+<%= form_for @orden_trabajos_import do |f| %>
+  <% if @orden_trabajos_import.errors.any? %>
+    <%= pluralize(@orden_trabajos_import.errors.count, "error") %> impidió que importáramos su hoja de cálculo. Actualice su hoja de cálculo y vuelva a intentarlo.
+    <ul>
+      <% @orden_trabajos_import.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= f.file_field :file %>
+  <%= f.submit "Importar Archivo" %>
+<% end %>

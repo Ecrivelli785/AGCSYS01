@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_26_224822) do
+ActiveRecord::Schema.define(version: 2020_09_27_061044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,12 @@ ActiveRecord::Schema.define(version: 2020_09_26_224822) do
     t.string "cam24"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "procesos"
+    t.string "observaciones"
+    t.string "estado_actual"
+    t.boolean "estado"
+    t.index ["clinom"], name: "index_orden_trabajos_on_clinom"
+    t.index ["trnum"], name: "index_orden_trabajos_on_trnum"
   end
 
 end
