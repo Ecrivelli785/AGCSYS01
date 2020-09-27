@@ -30,9 +30,11 @@ class OrdenTrabajosImport
       
       if row["clinom"] and row["nomprod"]
         
-        @orden_trabajos_bd = OrdenTrabajo.connection.select_all("SELECT id FROM orden_trabajos WHERE trnum = " + row["trnum"].to_s + " and clinom like '" + row["clinom"].to_s + "' and nomprod like '" + row["producto"].to_s + "'").to_a
+        @orden_trabajos_bd = OrdenTrabajo.connection.select_all("SELECT id FROM orden_trabajos WHERE trnum = " + row["trnum"].to_s + " and clinom like '" + row["clinom"].to_s + "' and nomprod like '" + row["nomprod"].to_s + "'").to_a
       
-      elsif row["clinom"].nil? and row["producto"]
+      elsif row["clinom"].nil? and row["nomprod"]
+      print "row[trnum] : "
+      puts row["trnum"].to_s
         @orden_trabajos_bd = OrdenTrabajo.connection.select_all("SELECT id FROM orden_trabajos WHERE trnum = " + row["trnum"].to_s + " and clinom IS NUll and nomprod '" + row["nomprod"].to_s + "'").to_a
 
       elsif row["clinom"] and row["nomprod"].nil? 

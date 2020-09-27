@@ -52,3 +52,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #gema importacion excel a bd
 
 gem "roo", "~> 2.7.0"
+gem 'axlsx', '~> 2.1.0.pre'
+gem 'axlsx_rails'

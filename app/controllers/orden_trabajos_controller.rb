@@ -16,9 +16,7 @@ class OrdenTrabajosController < ApplicationController
       format.json { render json: @orden_trabajos}
       
       format.xlsx {
-        response.headers[
-          'Content-Disposition'
-        ] = "attachment; filename = Listado_ordenes_trabajo.xlsx"
+        response.headers['Content-Disposition'] = "attachment; filename = Listado_ordenes_trabajo.xlsx"
       }
 
       format.pdf do

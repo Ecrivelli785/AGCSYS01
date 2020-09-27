@@ -2,6 +2,7 @@ Generate Model
     rails new SISA01 -d postgresql
 
     rails generate model OrdenTrabajo trnum:integer trcan:integer trcar:date clinom:string papel:string gramaje:integer colores:string pliego: integer nomprod:string fecentr:date cam10:string cam12:string cam24:string
+    
 
 	ELIMINAR UNA TABLA DESDE CONSOLA
 	class DropOrdenTrabajos < ActiveRecord::Migration[6.0]
@@ -32,3 +33,10 @@ Generate Model
 
 	#creando el modelo
 	touch app/models/orden_trabajos_import.rb
+
+	#comandos git
+	git checkout -b RAMAMARIOADIAZ
+	git add .
+	git status
+	git commit -m "IMPORTACION EXCEL NUEVO PROYECTO AGCSYS01"
+	git push origin RAMAMARIOADIAZ
