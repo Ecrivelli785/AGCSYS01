@@ -21,9 +21,5 @@ Rails.application.routes.draw do
   get 'orden_trabajos_imports/new'
   get 'orden_trabajos_imports/create'
 
-# Rutas creadas para cada pantalla
-  get 'listado', to: 'orden_trabajos#listado', as: :listado
-
-
 
 end
