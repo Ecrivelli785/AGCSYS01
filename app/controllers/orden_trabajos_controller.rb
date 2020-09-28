@@ -6,7 +6,7 @@ class OrdenTrabajosController < ApplicationController
   # GET /orden_trabajos
   # GET /orden_trabajos.json
 
-def index
+  def index
     @orden_trabajos = OrdenTrabajo.all.order('clinom ASC')
     respond_to do |format|
       format.html # index.html.erb
@@ -36,8 +36,8 @@ def index
         render pdf: 'listado/pdf', pdf: 'Listado',
         :orientation => 'landscape'
       end
-
-    end
+    end  
+  end
 
 
   def listado
