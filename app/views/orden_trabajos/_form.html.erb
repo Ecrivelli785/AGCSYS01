@@ -1,25 +1,52 @@
-
-<%= simple_form_for(@orden_trabajo) do |f| %>
+<div class="container">
+<h3 class="font-weight-bold text-center"> <%= orden_trabajo.clinom %> </h3>
+<%= simple_form_for (@orden_trabajo) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
-    <%= f.input :trnum %>
-    <%= f.input :trcan %>
-    <%= f.input :trcar %>
-    <%= f.input :clinom %>
-    <%= f.input :papel %>
-    <%= f.input :gramaje %>
-    <%= f.input :colores %>
-    <%= f.input :pliego %>
-    <%= f.input :nomprod %>
-    <%= f.input :fecentr %>
-    <%= f.input :cam10 %>
-    <%= f.input :cam12 %>
-    <%= f.input :cam24 %>
+  <div class="select1">
+    <%= f.input :nomprod, label: "Producto"%>
+    <%= f.input :observaciones, label: "Observaciones" %>
+    <div class="d-flex justify-content-between w-75 mt-5">
+      <div class="mr-5 "><%= f.input :trcan,label: "Cantidad"%></div>
+      <div class="mr-5"><%= f.input :fecentr, :class => 'datepicker', :default=>Date.today + 15.day, as: :date, html5: true ,label: "Fecha Entrega" %></div>
+      <div class="">
+        <p class="font-weight-bold text-center">Proceso</p>
+        <!-- Multiselect dropdown orden_trabajo.procesos -->
+          <select id= "orden_trabajo_procesos_<%=orden_trabajo.id%>" multiple="multiple" >
+            <% OrdenTrabajo::POST.each do  |clave, valor| %>
+              <%if valor == cadenatohash(orden_trabajo.procesos)[clave] %>
+                <option id=<%clave%> value = <%= cadenatohash(orden_trabajo.procesos)[clave] %> selected><%= cadenatohash(orden_trabajo.procesos)[clave] %></option>
+              <%else%>
+                <option id=<%clave%> value = <%= valor %> ><%= valor %></option>
+              <%end%>
+            <%end%>
+          </select>
+          <%= f.input :procesos, :as => :hidden, :input_html => { :id => orden_trabajo.id} %>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+<div>
+  <%= f.button :submit, name="Confirmar", :class => "center-block btn btn-primary btn-lg btn-block w-50  mt-5"%>
+</div>
 <% end %>
+
+<script type="text/javascript">
+  //multiselect orden_trabajo.procesos
+  $(document).ready(function() {
+    $("#orden_trabajo_procesos_<%=orden_trabajo.id%>").multiselect({allSelectedText: 'Showing All'});
+  });
+  //Fin del efecto multiselect orden_trabajo.procesos
+
+  //Cambia los valores de la cadena de proceso
+  $(function () {
+    $("#orden_trabajo_procesos_<%=orden_trabajo.id%>").change(function () {
+      var ValorSeleccionadoDropdown = $(this).val();
+      $(document).ready(function(){$("#<%=orden_trabajo.id%>").val(ValorSeleccionadoDropdown)});
+    });
+  });
+  //Fin de cambio los valores de la cadena de proceso
+
+  // Inicio de Date Picekr
+  $('.datepicker').datepicker({format: 'mm/dd/yyyy',startDate: '-3d'});
+  // Fin del Date Picker
+</script>
