@@ -1,22 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Trnum:</strong>
+  <strong>Ot:</strong>
   <%= @orden_trabajo.trnum %>
 </p>
 
 <p>
-  <strong>Trcan:</strong>
+  <strong>Cantidad:</strong>
   <%= @orden_trabajo.trcan %>
 </p>
 
 <p>
-  <strong>Trcar:</strong>
+  <strong>Fecha entrada:</strong>
   <%= @orden_trabajo.trcar %>
 </p>
 
 <p>
-  <strong>Clinom:</strong>
+  <strong>Nombre:</strong>
   <%= @orden_trabajo.clinom %>
 </p>
 
@@ -41,29 +41,15 @@
 </p>
 
 <p>
-  <strong>Nomprod:</strong>
+  <strong>Producto:</strong>
   <%= @orden_trabajo.nomprod %>
 </p>
 
 <p>
-  <strong>Fecentr:</strong>
+  <strong>Fecha entrega:</strong>
   <%= @orden_trabajo.fecentr %>
-</p>
-
-<p>
-  <strong>Cam10:</strong>
-  <%= @orden_trabajo.cam10 %>
-</p>
-
-<p>
-  <strong>Cam12:</strong>
-  <%= @orden_trabajo.cam12 %>
-</p>
-
-<p>
-  <strong>Cam24:</strong>
-  <%= @orden_trabajo.cam24 %>
 </p>
 
 <%= link_to 'Edit', edit_orden_trabajo_path(@orden_trabajo) %> |
 <%= link_to 'Back', orden_trabajos_path %>
+

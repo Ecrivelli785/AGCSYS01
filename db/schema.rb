@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_27_061044) do
+
+ActiveRecord::Schema.define(version: 2020_09_27_200403) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +39,7 @@ ActiveRecord::Schema.define(version: 2020_09_27_061044) do
     t.boolean "estado"
     t.index ["clinom"], name: "index_orden_trabajos_on_clinom"
     t.index ["trnum"], name: "index_orden_trabajos_on_trnum"
+
   end
 
 end

@@ -1,4 +1,4 @@
-class CreateOrdenTrabajos < ActiveRecord::Migration[6.0]
+  class CreateOrdenTrabajos < ActiveRecord::Migration[6.0]
   def change
     create_table :orden_trabajos do |t|
       t.integer :trnum
