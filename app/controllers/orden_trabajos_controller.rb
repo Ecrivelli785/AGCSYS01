@@ -95,7 +95,7 @@ class OrdenTrabajosController < ApplicationController
   def update
     respond_to do |format|
       if @orden_trabajo.update(orden_trabajo_params)
-        format.html { redirect_to @orden_trabajo, notice: 'Orden trabajo was successfully updated.' }
+        format.html { redirect_to action: "index", notice: 'Orden trabajo was successfully updated.' }
         format.json { render :show, status: :ok, location: @orden_trabajo }
       else
         format.html { render :edit }
