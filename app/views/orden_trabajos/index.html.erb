@@ -83,3 +83,18 @@
 <% end %>
   </tbody>
 </table>
+
+<input type="hidden" id="refresh" value="no"> <!-- Este boton escondido sirve para realizar un reload de la página-->
+
+<script>
+
+  // Update page con reload
+  $(document).ready(function(e) {
+    var $input = $('#refresh');
+
+    $input.val() == 'yes' ? location.reload(true) : $input.val('yes');
+});
+// Fin del update
+
+
+</script>
