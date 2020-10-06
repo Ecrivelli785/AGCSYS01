@@ -1,55 +1,64 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+    <div class="card-header">
+      <h2 class="my-0 font-weight-normal">Infromacion del trabajo</h2>
+    </div>
+  <div class="card-body">
+    <ul class="list-unstyled mt-3 mb-4 text-center">
 
-<p>
-  <strong>Ot:</strong>
-  <%= @orden_trabajo.trnum %>
-</p>
+      <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Cantidad:</strong>
-  <%= @orden_trabajo.trcan %>
-</p>
+      <h3>
+        <strong>Ot:</strong>
+        <%= @orden_trabajo.trnum %>
+      </h3>
+      <h3>
+        <strong>Nombre:</strong>
+        <%= @orden_trabajo.clinom %>
+      </h3>
 
-<p>
-  <strong>Fecha entrada:</strong>
-  <%= @orden_trabajo.trcar %>
-</p>
+      <h3>
+        <strong>Cantidad:</strong>
+        <%= @orden_trabajo.trcan %>
+      </h3>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @orden_trabajo.clinom %>
-</p>
+      <h3>
+        <strong>Fecha entrada:</strong>
+        <%= @orden_trabajo.trcar %>
+      </h3>
 
-<p>
-  <strong>Papel:</strong>
-  <%= @orden_trabajo.papel %>
-</p>
 
-<p>
-  <strong>Gramaje:</strong>
-  <%= @orden_trabajo.gramaje %>
-</p>
+      <h3>
+        <strong>Papel:</strong>
+        <%= @orden_trabajo.papel %>
+      </h3>
 
-<p>
-  <strong>Colores:</strong>
-  <%= @orden_trabajo.colores %>
-</p>
+      <h3>
+        <strong>Gramaje:</strong>
+        <%= @orden_trabajo.gramaje %>
+      </h3>
 
-<p>
-  <strong>Pliego:</strong>
-  <%= @orden_trabajo.pliego %>
-</p>
+      <h3>
+        <strong>Colores:</strong>
+        <%= @orden_trabajo.colores %>
+      </h3>
 
-<p>
-  <strong>Producto:</strong>
-  <%= @orden_trabajo.nomprod %>
-</p>
+      <h3>
+        <strong>Pliego:</strong>
+        <%= @orden_trabajo.pliego %>
+      </h3>
 
-<p>
-  <strong>Fecha entrega:</strong>
-  <%= @orden_trabajo.fecentr %>
-</p>
+      <h3>
+        <strong>Producto:</strong>
+        <%= @orden_trabajo.nomprod %>
+      </h3>
 
-<%= link_to 'Edit', edit_orden_trabajo_path(@orden_trabajo) %> |
-<%= link_to 'Back', orden_trabajos_path %>
+      <h3>
+        <strong>Fecha entrega:</strong>
+        <%= @orden_trabajo.fecentr %>
+      </h3>
+    </ul>
 
+      <%= link_to 'Editar', edit_orden_trabajo_path(@orden_trabajo), class: "btn btn-lg btn-block btn-primary"  %>
+      <%= link_to 'Atrás', orden_trabajos_path, class: "btn btn-lg btn-block btn-dark" %>
+  </div>
+</div>
