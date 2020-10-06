@@ -23,7 +23,6 @@
       <th>Producto</th>
       <th>Estado actual</th>
       <th>Proceso</th>
-      <th> </th>
       <th>Fecha entrega</th>
       <th>Observaciones</th>
       <th colspan="3"></th>
@@ -74,7 +73,7 @@
             </select>
             <!-- Fin multiselect dropdown html -->
           </td>
-          <td><%= f.input :procesos, :as => :hidden, :input_html => { :id => orden_trabajo.id} %></td>
+          <%= f.input :procesos, :as => :hidden, :input_html => { :id => orden_trabajo.id} %>
           <td><%= f.input :fecentr, :class => 'datepicker', :default=>Date.today + 15.day, as: :date, html5: true ,label: false %></td>
           <td><%= f.input :observaciones,  label: false %></td>
           <td><%= f.button :submit, name="Confirmar", :class => "btn btn-primary"%></td>
