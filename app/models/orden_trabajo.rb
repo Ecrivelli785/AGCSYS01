@@ -1,3 +1,3 @@
 class OrdenTrabajo < ApplicationRecord
-  POST = { "1" => "Ko", "2" => "SM", "3" => "PM", "4" => "GTO", "5" => "Xe", "6" => "Buv", "7" => "Lam", "8" => "Minerva", "9" => "Plana", "10" => "Fidia", "11" => "Baum", "12" =>"Renz","13" => "Duplo", "14" =>"C.Hilo", "15" => "Binder", "16" => "Zechini", "17" => "Alzadora", "18" => "C.Alambre", "19" => "Guillotina", "20" => "T.Manual", "21" => "Otros", "22" => "Empaque"}
+  POST = { "1" => "SM", "2" => "PM", "3" => "GTO", "4" => "SORZ", "5" => "Ko", "6" => "Xe", "7" => "Buv", "8" => "Lam", "9" => "Tipografia", "10" => "Fidia", "11" => "Baum","12" => "Duplo", "13" =>"C.Hilo", "14" => "Binder", "15" => "Zechini", "16" => "Alzadora", "17" => "C.Alambre", "18" => "T.Manual", "19" => "Otros", "20" =>"Renz", "21" => "Post"}
 end

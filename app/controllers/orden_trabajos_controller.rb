@@ -36,7 +36,7 @@ class OrdenTrabajosController < ApplicationController
         render pdf: 'listado/pdf', pdf: 'Listado',
         :orientation => 'landscape'
       end
-    end  
+    end
   end
 
 
@@ -95,8 +95,9 @@ class OrdenTrabajosController < ApplicationController
   def update
     respond_to do |format|
       if @orden_trabajo.update(orden_trabajo_params)
-        format.html { redirect_to action: "index", notice: 'Orden trabajo was successfully updated.' }
+        format.html
         format.json { render :show, status: :ok, location: @orden_trabajo }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @orden_trabajo.errors, status: :unprocessable_entity }
@@ -109,8 +110,9 @@ class OrdenTrabajosController < ApplicationController
   def destroy
     @orden_trabajo.destroy
     respond_to do |format|
-      format.html { redirect_to orden_trabajos_url, notice: 'Orden trabajo was successfully destroyed.' }
+      format.html
       format.json { head :no_content }
+      format.js { render :layout => false }
     end
   end
 
@@ -151,6 +153,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def orden_trabajo_params
-      params.require(:orden_trabajo).permit(:trnum, :clinom, :nomprod,  :fecentr, :procesos, :observaciones, :estado_actual, :estado)
+      params.require(:orden_trabajo).permit(:trnum, :clinom, :nomprod,  :fecentr, :procesos, :observaciones, :estado_actual, :estado, :trcan)
     end
 end

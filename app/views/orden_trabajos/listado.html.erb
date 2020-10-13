@@ -30,13 +30,11 @@
       <th>Ot</th>
       <th>Cliente</th>
       <th>Producto</th>
-      <th>Post</th>
-      <th></th>
+      <th>Cantidad</th>
       <th>Procesos</th>
       <th>Fecha entrega</th>
       <th>Observaciones</th>
-      <th colspan="3"></th>
-    </tr>
+      </tr>
   </thead>
 
 <!--Incio Tabla-->
@@ -46,11 +44,12 @@
         <td><%= link_to orden_trabajo.trnum, orden_trabajo %></td>
         <td><%= link_to orden_trabajo.clinom, orden_trabajo %></td>
         <td><%= link_to orden_trabajo.nomprod, orden_trabajo %></td>
+        <td> <%= orden_trabajo.trcan  %> </td>
         <td><%= orden_trabajo.procesos %></td>
         <td><%= orden_trabajo.fecentr%></td>
         <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
-        <td><%= link_to 'Edit', edit_orden_trabajo_path(orden_trabajo)%></td>
-        <td><%= link_to 'Destroy', orden_trabajo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '', orden_trabajo, method: :delete, data: { confirm:
+'Estás seguro/a?' }, :remote => true, :class => 'delete_ot btn-lg glyphicon glyphicon-trash' %></td>
       </tr>
     <% end %>
   </tbody>
