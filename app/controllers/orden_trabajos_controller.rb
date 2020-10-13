@@ -97,6 +97,7 @@ class OrdenTrabajosController < ApplicationController
       if @orden_trabajo.update(orden_trabajo_params)
         format.html
         format.json { render :show, status: :ok, location: @orden_trabajo }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @orden_trabajo.errors, status: :unprocessable_entity }
@@ -152,6 +153,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def orden_trabajo_params
-      params.require(:orden_trabajo).permit(:trnum, :clinom, :nomprod,  :fecentr, :procesos, :observaciones, :estado_actual, :estado)
+      params.require(:orden_trabajo).permit(:trnum, :clinom, :nomprod,  :fecentr, :procesos, :observaciones, :estado_actual, :estado, :trcan)
     end
 end
