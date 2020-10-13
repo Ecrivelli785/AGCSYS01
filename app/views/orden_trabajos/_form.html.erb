@@ -20,15 +20,15 @@
       <div class="">
         <p class="font-weight-bold text-center">Proceso</p>
         <!-- Multiselect dropdown orden_trabajo.procesos -->
-          <select id= "orden_trabajo_procesos_<%=orden_trabajo.id%>" multiple="multiple" >
-            <% OrdenTrabajo::POST.each do  |clave, valor| %>
-              <%if valor == cadenatohash(orden_trabajo.procesos)[clave] %>
-                <option id=<%clave%> value = <%= cadenatohash(orden_trabajo.procesos)[clave] %> selected><%= cadenatohash(orden_trabajo.procesos)[clave] %></option>
-              <%else%>
-                <option id=<%clave%> value = <%= valor %> ><%= valor %></option>
+            </select><select id= "orden_trabajo_procesos_<%=orden_trabajo.id%>" multiple="multiple">
+              <% OrdenTrabajo::POST.each do  |elemento_post| %>
+                  <%if cadenatovector(orden_trabajo.procesos).include?  elemento_post %>
+                    <option value = <%= elemento_post %> selected><%= elemento_post %></option>
+                  <%else%>
+                    <option value = <%= elemento_post %> ><%= elemento_post %></option>
+                  <%end%>
               <%end%>
-            <%end%>
-          </select>
+            </select>
           <%= f.input :procesos, :as => :hidden, :input_html => { :id => orden_trabajo.id} %>
       </div>
     </div>
