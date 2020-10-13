@@ -52,6 +52,7 @@
                 });
               });
               //Fin del efecto multiselect orden_trabajo.post
+
               //Cambia los valores de la cadena de proceso
               $(function () {
                 $("#orden_trabajo_procesos_<%=orden_trabajo.id%>").change(function () {
@@ -66,12 +67,11 @@
             </script>
             <!-- Multiselect dropdown html -->
             <select id= "orden_trabajo_procesos_<%=orden_trabajo.id%>" multiple="multiple">
-              <% OrdenTrabajo::POST.each do  |clave, valor| %>
-                  <%if valor == cadenatohash(orden_trabajo.procesos)[clave] %>
-                    <option value = <%= cadenatohash(orden_trabajo.procesos)[clave] %> selected><%= cadenatohash(orden_trabajo.procesos)[clave] %>
-                    </option>
+              <% OrdenTrabajo::POST.each do  |elemento_post| %>
+                  <%if cadenatovector(orden_trabajo.procesos).include?  elemento_post %>
+                    <option value = <%= elemento_post %> selected><%= elemento_post %></option>
                   <%else%>
-                    <option value = <%=valor%> ><%= valor %></option>
+                    <option value = <%= elemento_post %> ><%= elemento_post %></option>
                   <%end%>
               <%end%>
             </select>
