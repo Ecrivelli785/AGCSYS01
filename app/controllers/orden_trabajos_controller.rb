@@ -153,6 +153,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def orden_trabajo_params
-      params.require(:orden_trabajo).permit(:trnum, :clinom, :nomprod,  :fecentr, :procesos, :observaciones, :estado_actual, :estado, :trcan)
+      params.require(:orden_trabajo).permit(:trnum, :clinom, :nomprod,  :fecentr, :procesos, :observaciones, :estado_actual, :estado, :trcan, :gramaje, :papel, :colores, :pliego)
     end
 end
