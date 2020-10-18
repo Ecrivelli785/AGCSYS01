@@ -12,8 +12,8 @@
       </thead>
       <tbody>
     <% @orden_trabajos.each do |orden_trabajo| %>
-    <% if orden_trabajo.procesos.include? "Buv" %>
-          <tr class="<%= "bg-danger font-weight-bold" if (orden_trabajo.fecha_entrega <= Date.today + 1) %>">
+    <% if orden_trabajo.where(:procesos => 'Buv').present? %>
+          <tr>
             <td><%= orden_trabajo.cliente %></td>
             <td><%= orden_trabajo.producto %></td>
             <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
