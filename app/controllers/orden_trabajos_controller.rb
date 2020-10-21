@@ -144,7 +144,7 @@ end
     # Use callbacks to share common setup or constraints between actions.
 
     def listado_trabajo
-      @orden_trabajos = OrdenTrabajo.all.order('fecentr ASC')
+      @orden_trabajos = OrdenTrabajo.all
     end
 
     def set_orden_trabajo

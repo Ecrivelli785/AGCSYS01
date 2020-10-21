@@ -41,7 +41,7 @@
           <td> <%= orden_trabajo.trcan  %> </td>
 
           <td>
-            <%= f.input :estado_actual, as: :select, :collection => ["Pendiente", "Diseño Diego", "Diseño Ismael", "Diseño Eduardo", "Diseño Miguel", "Diseño Santiago", "CTP", "Impresión", "Procesos", "Terminado"], label: false, :default=> "Pendiente" %>
+            <%= f.input :estado_actual, as: :select, :collection => ["Pendiente", "Diseño Diego", "Diseño Ismael", "Diseño Eduardo", "Diseño Miguel", "Diseño Santiago", "CTP", "Impresión", "Procesos", "Guillotina o Empaque"], label: false, :default=> "Pendiente" %>
           </td>
           <td>
             <script>
@@ -69,7 +69,7 @@
             <select id= "orden_trabajo_procesos_<%=orden_trabajo.id%>" multiple="multiple">
               <% OrdenTrabajo::POST.each do  |elemento_post| %>
                   <%if cadenatovector(orden_trabajo.procesos).include?  elemento_post %>
-                    <option value = <%= elemento_post %>selected><%= elemento_post %></option>
+                    <option value = <%= elemento_post %> selected ><%= elemento_post %></option>
                   <%else%>
                     <option value = <%= elemento_post %> ><%= elemento_post %></option>
                   <%end%>
