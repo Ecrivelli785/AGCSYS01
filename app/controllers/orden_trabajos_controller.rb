@@ -16,6 +16,7 @@ class OrdenTrabajosController < ApplicationController
         render pdf: 'listado/pdf', pdf: 'Listado'
       end
     end
+
   end
 
 
@@ -58,7 +59,6 @@ class OrdenTrabajosController < ApplicationController
 
     end
   end
-
 
   # GET /orden_trabajos/1
   # GET /orden_trabajos/1.json
@@ -108,6 +108,7 @@ class OrdenTrabajosController < ApplicationController
   # DELETE /orden_trabajos/1
   # DELETE /orden_trabajos/1.json
   def destroy
+
     @orden_trabajo.destroy
     respond_to do |format|
       format.html
