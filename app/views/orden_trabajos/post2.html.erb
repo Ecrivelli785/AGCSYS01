@@ -1,0 +1,63 @@
+<div class="d-flex justify-content-around">
+  <div class="container">
+      <table class="table table-striped">
+        <h1 class="mt-3"><strong>Tipografia</strong></h1>
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Producto</th>
+          <th>Observación</th>
+          <th>Fecha Entrega</th>
+        </tr>
+      </thead>
+      <tbody>
+    <% @orden_trabajos.each do |orden_trabajo| %>
+    <% if cadenatovector(orden_trabajo.procesos).include? "Tipografia"%>
+          <tr>
+            <td><%= orden_trabajo.clinom %></td>
+            <td><%= orden_trabajo.nomprod.first(20) %></td>
+            <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
+            <td><%= orden_trabajo.fecentr %></td>
+            <td>
+        <% end %>
+      <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    <div class="container">
+      <table class="table table-striped">
+        <h1 class="mt-3"><strong>Fidia</strong></h1>
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Producto</th>
+          <th>Observación</th>
+          <th>Fecha Entrega</th>
+        </tr>
+      </thead>
+      <tbody>
+    <% @orden_trabajos.each do |orden_trabajo| %>
+    <% if cadenatovector(orden_trabajo.procesos).include? "Fidia" %>
+
+          <tr>
+            <td><%= orden_trabajo.clinom %></td>
+            <td><%= orden_trabajo.nomprod.first(20) %></td>
+            <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
+            <td> <%= orden_trabajo.fecentr %></td>
+          <% end %>
+        <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!--
+//Using setTimeout to execute a function after 5 seconds.
+setTimeout(function () {
+   //Redirect with JavaScript
+   window.location.href= 'http://localhost:3000/offset';
+},  30000);
+ -->
