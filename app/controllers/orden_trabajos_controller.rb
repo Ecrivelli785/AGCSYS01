@@ -47,22 +47,6 @@ class OrdenTrabajosController < ApplicationController
     end
   end
 
-  def listado
-    @orden_trabajos = OrdenTrabajo.all.order('clinom ASC')
-    respond_to do |format|
-      format.html # index.html.erb
-      format.js # index.js.erb
-      format.json { render json: @orden_trabajos}
-      format.xlsx {
-        response.headers['Content-Disposition'] = "attachment; filename = Listado_ordenes_trabajo.xlsx"
-      }
-      format.pdf do
-        render pdf: 'listado/pdf', pdf: 'Listado',
-        :orientation => 'landscape'
-      end
-    end
-  end
-
   # GET /orden_trabajos/1
   # GET /orden_trabajos/1.json
 
