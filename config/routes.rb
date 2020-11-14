@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  root to: 'orden_trabajos#index'
+  root to: "/orden_trabajos/:orden_trabajo_id", to: "orden_trabajos#index"
   resources :orden_trabajos
+  get '/orden_trabajos/:id/copy', to: 'orden_trabajos#copy', as: :copy
 
   # Rutas creadas para cada pantalla
     get 'listado', to: 'orden_trabajos#listado', as: :listado
@@ -23,3 +24,5 @@ Rails.application.routes.draw do
 
 
 end
+
+
