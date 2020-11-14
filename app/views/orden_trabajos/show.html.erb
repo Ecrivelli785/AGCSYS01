@@ -1,6 +1,8 @@
 <div class="container">
-    <div class="card-header">
-      <h2 class="my-0 font-weight-normal">Infromacion del trabajo</h2>
+    <div class="card-header d-flex justify-content-between">
+      <div><h2 class="my-0 font-size:8vw">Infromacion del trabajo</h2></div>
+      <div> <%= link_to 'Editar producto', edit_orden_trabajo_path(@orden_trabajo), class: "btn btn-primary" %></div>
+      <div><%= link_to 'Copiar producto', copy_path(@orden_trabajo.id), class: "btn btn-danger boton-rojo" %></div>
     </div>
   <div class="card-body">
     <ul class="list-unstyled mt-3 mb-4 text-center">
@@ -59,7 +61,7 @@
       </h3>
     </ul>
 
-      <%= link_to 'Editar', edit_orden_trabajo_path(@orden_trabajo), class: "btn btn-lg btn-block btn-primary"  %>
       <%= link_to 'Atrás', orden_trabajos_path, class: "btn btn-lg btn-block btn-dark" %>
+
   </div>
 </div>
