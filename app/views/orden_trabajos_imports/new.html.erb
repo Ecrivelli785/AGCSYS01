@@ -1,25 +1,59 @@
-<h1 class="text-center">Importar Excel</h1>
-
-<h3>
-  <strong class="text-center"> ATENCION: Solamente se pueden archivos con extension XLSX.</strong>
-</h3>
-<p> <%= link_to "https://documento.online-convert.com/es/convertir/xls-a-xlsx" %> </p>
-
-
-<h3>Requerimientos</h3>
+<h1 class="text-center card-header text-center">Importar planilla excel de Aramis</h1>
+<div class="container">
+  <h3 class="text-center">
+   ATENCION: Solamente se pueden archivos con extension <strong>XLSX.</strong>
+  </h3>
 
 
-<h5>Seleccionar arhivo</h5>
-<%= form_for @orden_trabajos_import do |f| %>
-  <% if @orden_trabajos_import.errors.any? %>
-    <%= pluralize(@orden_trabajos_import.errors.count, "error") %> impidió que importáramos su hoja de cálculo. Actualice su hoja de cálculo y vuelva a intentarlo.
-    <ul>
-      <% @orden_trabajos_import.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  <% end %>
+  <div class="container center-block mt-3 ">
 
-  <%= f.file_field :file %>
-  <%= f.submit "Importar Archivo" %>
-<% end %>
+    <div class="row">
+
+      <div class="col-sm mt-3  align-self-center">
+        <div class="card center-block" style="width: 18rem;">
+          <%= image_tag 'csv-xls.jpeg', class: "img-fluid" %>
+           <div class="card-body">
+            <h5 class="card-title text-center text-danger"> <strong>¡ARCHIVOS NO VALIDOS!</strong></h5>
+            <p class="card-text text-center">Si los archivos terminan con ".csv" o ".xls" deberan modificarse a un archivo ."xlsx"</p>
+          <a href="https://convertio.co/es/xls-xlsx/" class="btn btn-danger" target="_blank">Convertir xlsx</a>
+        </div>
+       </div>
+      </div>
+
+      <div class="col-sm mt-3   align-self-center">
+        <div class="card center-block" style="width: 18rem;">
+        <%= image_tag 'xlsxx.png', class: "img-fluid" %>
+          <div class="card-body">
+            <h5 class="card-title text-center"> <strong>ARCHIVOS VALIDO</strong></h5>
+            <i class="fa fa-times" aria-hidden="true"></i>
+            <p class="card-text text-center">Subir los arichos que terminan en ."xlsx"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+        <h3 class="text-center mt-5"><strong>Subir archivo del ordenador</strong></h3>
+  <div class="container center-block w-25 mt-5">
+    <div class="center-block">
+        <%= form_for @orden_trabajos_import do |f| %>
+          <% if @orden_trabajos_import.errors.any? %>
+            <%= pluralize(@orden_trabajos_import.errors.count, "error") %> impidió que importáramos su hoja de cálculo. Actualice su hoja de cálculo y vuelva a intentarlo.
+            <ul>
+              <% @orden_trabajos_import.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        <ol>
+          <li><%= f.file_field :file %></li>
+          <li><%= f.submit "Importar Archivo" , :class => "mt-3" %></li>
+        </ol>
+        <% end %>
+
+    </div>
+  </div>
+</div>
+
+

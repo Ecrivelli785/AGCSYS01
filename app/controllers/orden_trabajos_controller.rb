@@ -26,6 +26,7 @@ class OrdenTrabajosController < ApplicationController
           if @orden_trabajo.save
           format.html { redirect_to orden_trabajos_path, notice: 'La orden de trabajo fue duplicada.' }
           format.json { render :show, status: :created, location: @orden_trabajo }
+          format.js
         end
       end
   end
@@ -70,6 +71,7 @@ class OrdenTrabajosController < ApplicationController
       if @orden_trabajo.save
         format.html { redirect_to @orden_trabajo, notice: 'Orden trabajo was successfully created.' }
         format.json { render :show, status: :created, location: @orden_trabajo }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @orden_trabajo.errors, status: :unprocessable_entity }

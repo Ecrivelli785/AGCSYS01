@@ -38,7 +38,7 @@
 <% @orden_trabajos.each do |orden_trabajo| %>
       <%= simple_form_for (orden_trabajo), html: { data: { action: "ajax:success->form#onPostSuccess" } }  do |f| %>
         <tr>
-          <td><%= link_to "#{orden_trabajo.trnum}", copy_path(orden_trabajo.id), :remote => true %></td>
+          <td><%= link_to "#{orden_trabajo.trnum}", copy_path(orden_trabajo.id), input_html: { data: {action: "input->filter#add propertychange->filter#add"}} %></td>
           <td><%= link_to "#{orden_trabajo.clinom}", orden_trabajo_path(orden_trabajo)%></td>
           <td><%= link_to "#{orden_trabajo.nomprod.first(30)}", edit_orden_trabajo_path(orden_trabajo) %></td>
           <td> <%= orden_trabajo.trcan  %> </td>
