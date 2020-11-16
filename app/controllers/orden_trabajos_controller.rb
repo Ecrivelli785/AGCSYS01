@@ -17,18 +17,24 @@ class OrdenTrabajosController < ApplicationController
     end
   end
 
-
-
   def copy
     @ot_actual = OrdenTrabajo.find(params[:id])
     @orden_trabajo = @ot_actual.dup
-      respond_to do |format|
-          if @orden_trabajo.save
-          format.html { redirect_to orden_trabajos_path, notice: 'La orden de trabajo fue duplicada.' }
-          format.json { render :show, status: :created, location: @orden_trabajo }
-          format.js
+    respond_to do |format|
+      if @orden_trabajo.save
+        format.html { redirect_to orden_trabajos_path, notice: 'La orden de trabajo fue duplicada.' }
+        format.json do
+          render json: {
+            id: @orden_trabajo.id,
+            tableRowPartial: render_to_string(
+              'orden_trabajos/partials/_table_row.html.erb',
+              layout: false,
+              locals: { orden_trabajo: @orden_trabajo }
+            )
+          }
         end
       end
+    end
   end
 
 
