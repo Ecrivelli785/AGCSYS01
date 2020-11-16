@@ -131,7 +131,7 @@ end
   private
     # Use callbacks to share common setup or constraints between actions.
     def listado_trabajo
-      @orden_trabajos = OrdenTrabajo.all.order('fecentr ASC')
+      @orden_trabajos = OrdenTrabajo.order('fecentr ASC, clinom ASC').first(10)
     end
     def set_orden_trabajo
       @orden_trabajo = OrdenTrabajo.find(params[:id])

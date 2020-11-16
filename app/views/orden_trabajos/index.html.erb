@@ -14,6 +14,11 @@
   });
 });
 </script>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top " class="fa fa-arrow-up" >Tira Mi Su</button>
+
+
+
 <input class="ml-3 w-25" id="buscador_datos" type="text" placeholder="Buscar trabajo">
 <table class="table table-striped  m-2">
   <thead>
@@ -104,4 +109,25 @@
 });
 // Fin del update
 
+
+
+//Get the button:
+mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 15 || document.documentElement.scrollTop > 15) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
 </script>
