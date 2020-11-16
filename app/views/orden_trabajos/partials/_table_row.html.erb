@@ -1,0 +1,55 @@
+<tr data-controller="orders" data-target="orders.row">
+  <%= simple_form_for (orden_trabajo), html: { data: { action: "ajax:success->form#onPostSuccess" } }  do |f| %>
+    <td>
+      <button type="button" class="btn btn-success" data-action="click->orders#copy" data-id=<%= orden_trabajo.id %>>
+        <%= orden_trabajo.trnum %>
+      </button>
+    </td>
+    <td><%= link_to "#{orden_trabajo.clinom}", orden_trabajo_path(orden_trabajo)%></td>
+    <td><%= link_to "#{orden_trabajo.nomprod.first(30)}", edit_orden_trabajo_path(orden_trabajo) %></td>
+    <td> <%= orden_trabajo.trcan  %> </td>
+    <td>
+      <%= f.input :estado_actual, as: :select, :collection => ["Pendiente", "Diseño Diego", "Diseño Ismael", "Diseño Eduardo", "Diseño Miguel", "Diseño Santiago", "CTP", "Impresión", "Procesos", "Guillotina o Empaque"], label: false, :default=> "Pendiente" %>
+    </td>
+    <td>
+      <script>
+        // Multiselect dropdown orden_trabajo.post -->
+        $(document).ready(function() {
+          $("#orden_trabajo_procesos_<%=orden_trabajo.id%>").multiselect({
+              allSelectedText: 'Showing All'
+          });
+        });
+        //Fin del efecto multiselect orden_trabajo.post
+
+        //Cambia los valores de la cadena de proceso
+        $(function () {
+          $("#orden_trabajo_procesos_<%=orden_trabajo.id%>").change(function () {
+            var ValorSeleccionadoDropdown = $(this).val();
+            $(document).ready(function(){$("#<%=orden_trabajo.id%>").val(ValorSeleccionadoDropdown)});
+          });
+        });
+        //Fin de cambio los valores de la cadena de proceso
+        // Inicio de Date Picekr
+        $('.datepicker').datepicker({format: 'mm/dd/yyyy',startDate: '-3d'});
+        // Fin del Date Picker
+      </script>
+      <!-- Multiselect dropdown html -->
+      <select id= "orden_trabajo_procesos_<%=orden_trabajo.id%>" multiple="multiple">
+        <% OrdenTrabajo::POST.each do  |elemento_post| %>
+          <%if cadenatovector(orden_trabajo.procesos).include?  elemento_post %>
+            <option value = <%= elemento_post %> selected ><%= elemento_post %></option>
+          <%else%>
+            <option value = <%= elemento_post %> ><%= elemento_post %></option>
+          <%end%>
+        <%end%>
+      </select>
+      <!-- Fin multiselect dropdown html -->
+    </td>
+    <%= f.input :procesos, :as => :hidden, :input_html => { :id => orden_trabajo.id} %>
+    <!-- <td>< f.input :fecentr, :class => 'datepicker', : default =>Date .today + 15.day, as: :date, html5: true ,label: false %></td> -->
+    <td><%= f.input :observaciones,  label: false,  placeholder: "#{orden_trabajo.fecentr}"  %></td>
+    <td><%= f.button :submit, name="Confirmar", :class => "btn btn-primary", input_html: { data: {action: "input->filter#update propertychange->filter#update"}}%></td>
+    <td><%= link_to '', orden_trabajo, method: :delete, data: { confirm:
+  'Estás seguro/a?' }, :remote => true, :class => 'delete_ot btn-lg glyphicon glyphicon-trash' %></td>
+  <% end %>
+</tr>
