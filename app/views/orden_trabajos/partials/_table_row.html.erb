@@ -12,27 +12,6 @@
       <%= f.input :estado_actual, as: :select, :collection => ["Pendiente", "Diseño Diego", "Diseño Ismael", "Diseño Eduardo", "Diseño Miguel", "Diseño Santiago", "CTP", "Impresión", "Procesos", "Guillotina o Empaque"], label: false, :default=> "Pendiente" %>
     </td>
     <td>
-      <script>
-        // Multiselect dropdown orden_trabajo.post -->
-        $(document).ready(function() {
-          $("#orden_trabajo_procesos_<%=orden_trabajo.id%>").multiselect({
-              allSelectedText: 'Showing All'
-          });
-        });
-        //Fin del efecto multiselect orden_trabajo.post
-
-        //Cambia los valores de la cadena de proceso
-        $(function () {
-          $("#orden_trabajo_procesos_<%=orden_trabajo.id%>").change(function () {
-            var ValorSeleccionadoDropdown = $(this).val();
-            $(document).ready(function(){$("#<%=orden_trabajo.id%>").val(ValorSeleccionadoDropdown)});
-          });
-        });
-        //Fin de cambio los valores de la cadena de proceso
-        // Inicio de Date Picekr
-        $('.datepicker').datepicker({format: 'mm/dd/yyyy',startDate: '-3d'});
-        // Fin del Date Picker
-      </script>
       <!-- Multiselect dropdown html -->
       <select id= "orden_trabajo_procesos_<%=orden_trabajo.id%>" multiple="multiple">
         <% OrdenTrabajo::POST.each do  |elemento_post| %>

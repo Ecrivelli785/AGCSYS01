@@ -25,6 +25,7 @@ class OrdenTrabajosController < ApplicationController
         format.html { redirect_to orden_trabajos_path, notice: 'La orden de trabajo fue duplicada.' }
         format.json do
           render json: {
+            id: @orden_trabajo.id,
             tableRowPartial: render_to_string(
               'orden_trabajos/partials/_table_row.html.erb',
               layout: false,

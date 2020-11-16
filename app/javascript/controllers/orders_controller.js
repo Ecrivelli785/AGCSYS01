@@ -8,6 +8,18 @@ export default class extends Controller {
       .then(response => response.json())
       .then((data) => {
         this.rowTarget.insertAdjacentHTML("afterend", data.tableRowPartial);
+        $(document).ready(function() {
+          $(`#orden_trabajo_procesos_${data.id}`).multiselect({
+              allSelectedText: 'Showing All'
+          });
+        });
+        $(function () {
+          $(`#orden_trabajo_procesos_${data.id}`).change(function () {
+            var ValorSeleccionadoDropdown = $(this).val();
+            $(document).ready(function(){$(data.id).val(ValorSeleccionadoDropdown)});
+          });
+        });
+        $('.datepicker').datepicker({format: 'mm/dd/yyyy',startDate: '-3d'});
       });
   }
 }
