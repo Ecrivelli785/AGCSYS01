@@ -21,5 +21,16 @@ export default class extends Controller {
         });
         $('.datepicker').datepicker({format: 'mm/dd/yyyy',startDate: '-3d'});
       });
+      $('.delete_ot').bind('ajax:success', function() {
+  $(this).closest('tr').fadeOut();
+});
   }
+
+
+
 }
+
+
+
+
+

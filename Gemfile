@@ -19,14 +19,15 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 
 
+
 gem 'mini_racer'
 
 
-gem 'simple_form'
+gem 'simple_form', '~> 5.0', '>= 5.0.3'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 
-gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf', '~> 2.1'
+gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -36,9 +37,9 @@ gem 'wkhtmltopdf-binary'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
-gem 'autoprefixer-rails'
+gem 'autoprefixer-rails', '~> 10.0', '>= 10.0.2.0'
 gem 'font-awesome-sass', '~> 5.12.0'
-gem 'simple_form'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
