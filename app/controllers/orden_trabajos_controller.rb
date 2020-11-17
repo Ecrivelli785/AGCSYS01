@@ -8,8 +8,8 @@ class OrdenTrabajosController < ApplicationController
   def index
     @orden_trabajos = OrdenTrabajo.all.order('clinom ASC')
     respond_to do |format|
-      format.html # index.html.erb
-      format.js # index.js.erb
+      format.html
+      format.js
       format.json { render json: @orden_trabajos}
              format.pdf do
         render pdf: 'listado/pdf', pdf: 'Listado'
@@ -41,8 +41,8 @@ class OrdenTrabajosController < ApplicationController
   def listado
     @orden_trabajos = OrdenTrabajo.all.order('clinom ASC')
     respond_to do |format|
-      format.html # index.html.erb
-      format.js # index.js.erb
+      format.html
+      format.js
       format.json { render json: @orden_trabajos}
       format.xlsx {
         response.headers['Content-Disposition'] = "attachment; filename = Listado_ordenes_trabajo.xlsx"
