@@ -48,7 +48,7 @@
             <td><%= link_to "#{orden_trabajo.nomprod.first(30)}", edit_orden_trabajo_path(orden_trabajo) %></td>
             <td> <%= orden_trabajo.trcan  %> </td>
             <td>
-              <%= f.input :estado_actual, as: :select, :collection => ["Pendiente", "Diseño Diego", "Diseño Ismael", "Diseño Eduardo", "Diseño Miguel", "Diseño Santiago", "CTP", "Impresión", "Procesos", "Guillotina o Empaque"], label: false, :default=> "Pendiente" %>
+              <%= f.input :estado_actual, as: :select, :collection => ["Pendiente", "Diseño Diego", "Diseño Ismael", "Diseño Eduardo", "Diseño Miguel", "Diseño Santiago", "CTP", "Impresión", "Procesos", "Guillotina/Empaque"], label: false, :default=> "Pendiente" %>
             </td>
             <td>
               <script>

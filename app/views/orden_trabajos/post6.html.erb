@@ -12,7 +12,7 @@
       </thead>
       <tbody>
     <% @orden_trabajos.each do |orden_trabajo| %>
-       <% if orden_trabajo.estado_actual == "Guillotina o Empaque" %>
+       <% if orden_trabajo.estado_actual == "Guillotina/Empaque" %>
           <tr>
             <td><%= orden_trabajo.clinom %></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
@@ -87,6 +87,6 @@
 //Using setTimeout to execute a function after 5 seconds.
 setTimeout(function () {
    //Redirect with JavaScript
-   window.location.href= 'http://localhost:3000/post7';
+   window.location.href= 'http://planillaot.herokuapp.com/post7';
 },  15000);
 </script>
