@@ -1,14 +1,13 @@
 <p id="notice"><%= notice %></p>
-<div class="d-flex justify-content-between mr-5 ml-2">
-  <div class="ml-3 mb-2"><h3>Listados de trabajos en el taller</h3></div>
-  <div><h3><%= link_to 'Descargar pdf', listado_path(format: 'pdf')  %></h3></div>
-  <div><h3><%= link_to 'Descargar Excel', listado_path(format: 'xlsx')  %></h3></div>
-  <div><h3><%= link_to 'Importar Excel', orden_trabajos_imports_new_path %></h3></div>
 
-
-
+<div class="container ml-2">
+    <div class="row">
+    <div class="col-sm mr-5 pr-5"><h3> <strong>Listados de trabajos en el taller</strong></h3></div>
+    <div class="col-sm ml-5"><h3><%= link_to 'Descargar pdf', listado_path(format: 'pdf'), :class => 'btn btn-success', :target => 'blank' %></h3></div>
+    <div class="col-sm ml-5"><h3><%= link_to 'Descargar Excel', listado_path(format: 'xlsx'), :class => 'btn btn-success'  %></h3></div>
+    <div class="col-sm ml-5 mb-5"><h3><%= link_to 'Importar Excel', orden_trabajos_imports_new_path , :class => 'btn btn-primary' %></h3></div>
+  </div>
 </div>
-
 <!--Buscador Jquery-->
 <script>
   $(document).ready(function(){
@@ -20,6 +19,10 @@
   });
 });
 </script>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top " class="fa fa-arrow-up" >Tira Mi Su</button>
+
+
 <input class="ml-3 w-25" id="buscador_datos" type="text" placeholder="Buscar trabajo">
 <!--Fin buscador jquery-->
 
@@ -31,6 +34,7 @@
       <th>Cliente</th>
       <th>Producto</th>
       <th>Cantidad</th>
+      <th>Estado Actual</th>
       <th>Procesos</th>
       <th>Fecha entrega</th>
       <th>Observaciones</th>
@@ -45,6 +49,7 @@
         <td><%= link_to orden_trabajo.clinom, orden_trabajo %></td>
         <td><%= link_to orden_trabajo.nomprod, orden_trabajo %></td>
         <td> <%= orden_trabajo.trcan  %> </td>
+        <td> <%= orden_trabajo.estado_actual %> </td>
         <td><%= orden_trabajo.procesos %></td>
         <td><%= orden_trabajo.fecentr%></td>
         <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
@@ -55,3 +60,29 @@
   </tbody>
   <!--Fin Tabla-->
 </table>
+
+
+
+<script type="text/javascript">
+
+//Get the button:
+mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+</script>

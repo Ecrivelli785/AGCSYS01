@@ -54,22 +54,6 @@ class OrdenTrabajosController < ApplicationController
     end
   end
 
-  def listado
-    @orden_trabajos = OrdenTrabajo.all.order('clinom ASC')
-    respond_to do |format|
-      format.html # index.html.erb
-      format.js # index.js.erb
-      format.json { render json: @orden_trabajos}
-      format.xlsx {
-        response.headers['Content-Disposition'] = "attachment; filename = Listado_ordenes_trabajo.xlsx"
-      }
-      format.pdf do
-        render pdf: 'listado/pdf', pdf: 'Listado',
-        :orientation => 'landscape'
-      end
-    end
-  end
-
   # GET /orden_trabajos/1
   # GET /orden_trabajos/1.json
 
@@ -93,6 +77,7 @@ class OrdenTrabajosController < ApplicationController
       if @orden_trabajo.save
         format.html { redirect_to @orden_trabajo, notice: 'Orden trabajo was successfully created.' }
         format.json { render :show, status: :created, location: @orden_trabajo }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @orden_trabajo.errors, status: :unprocessable_entity }
@@ -152,7 +137,7 @@ end
   private
     # Use callbacks to share common setup or constraints between actions.
     def listado_trabajo
-      @orden_trabajos = OrdenTrabajo.all.order('fecentr ASC')
+      @orden_trabajos = OrdenTrabajo.order('fecentr ASC, clinom ASC').first(10)
     end
     def set_orden_trabajo
       @orden_trabajo = OrdenTrabajo.find(params[:id])

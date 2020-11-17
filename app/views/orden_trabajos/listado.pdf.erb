@@ -30,6 +30,7 @@
       <th>Cliente</th>
       <th>Producto</th>
       <th>Cantidad</th>
+      <th>Estado Actual</th>
       <th>Procesos</th>
       <th>Observaciones</th>
       <th>Fecha entrega</th>
@@ -44,6 +45,7 @@
         <td><%= link_to orden_trabajo.clinom, orden_trabajo %></td>
         <td><%= link_to orden_trabajo.nomprod, orden_trabajo %></td>
         <td> <%= orden_trabajo.trcan  %> </td>
+        <th> <%= orden_trabajo.estado_actual %> </th>
         <td><%= orden_trabajo.procesos %></td>
         <td><%= truncate(orden_trabajo.observaciones)%></td>
         <td><%= orden_trabajo.fecentr%></td>
