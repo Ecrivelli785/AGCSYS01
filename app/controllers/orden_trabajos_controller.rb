@@ -1,5 +1,4 @@
 class OrdenTrabajosController < ApplicationController
-
   before_action :set_orden_trabajo, only: [:show, :copy, :edit, :update, :destroy]
   before_action :listado_trabajo, only:[:digital, :offset, :post1, :post2, :post3, :post4, :post5, :post6, :post7]
   # GET /orden_trabajos
@@ -8,8 +7,8 @@ class OrdenTrabajosController < ApplicationController
   def index
     @orden_trabajos = OrdenTrabajo.all.order('clinom ASC')
     respond_to do |format|
-      format.html # index.html.erb
-      format.js # index.js.erb
+      format.html 
+      format.js 
       format.json { render json: @orden_trabajos}
              format.pdf do
         render pdf: 'listado/pdf', pdf: 'Listado'
@@ -17,25 +16,34 @@ class OrdenTrabajosController < ApplicationController
     end
   end
 
-
-
   def copy
     @ot_actual = OrdenTrabajo.find(params[:id])
+
     @orden_trabajo = @ot_actual.dup
+    
+    @orden_trabajo.clinom = @orden_trabajo.clinom + " -- DUP"
+
       respond_to do |format|
-          if @orden_trabajo.save
-          format.html { redirect_to orden_trabajos_path, notice: 'La orden de trabajo fue duplicada.' }
+
+        if @orden_trabajo.save
+
+          format.html { redirect_to orden_trabajos_path, notice: 'La orden de trabajo fue Duplicada!' }  
           format.json { render :show, status: :created, location: @orden_trabajo }
+          format.js 
+        else
+          format.html { render :new }
+          format.json { render json: @orden_trabajo.errors, status: :unprocessable_entity }
+          format.js 
         end
+        
       end
   end
-
 
   def listado
     @orden_trabajos = OrdenTrabajo.all.order('clinom ASC')
     respond_to do |format|
-      format.html # index.html.erb
-      format.js # index.js.erb
+      format.html 
+      format.js 
       format.json { render json: @orden_trabajos}
       format.xlsx {
         response.headers['Content-Disposition'] = "attachment; filename = Listado_ordenes_trabajo.xlsx"
@@ -46,65 +54,50 @@ class OrdenTrabajosController < ApplicationController
       end
     end
   end
-
-  def listado
-    @orden_trabajos = OrdenTrabajo.all.order('clinom ASC')
-    respond_to do |format|
-      format.html # index.html.erb
-      format.js # index.js.erb
-      format.json { render json: @orden_trabajos}
-      format.xlsx {
-        response.headers['Content-Disposition'] = "attachment; filename = Listado_ordenes_trabajo.xlsx"
-      }
-      format.pdf do
-        render pdf: 'listado/pdf', pdf: 'Listado',
-        :orientation => 'landscape'
-      end
-    end
-  end
-
   # GET /orden_trabajos/1
   # GET /orden_trabajos/1.json
 
   def show
   end
   # GET /orden_trabajos/new
-
   def new
     @orden_trabajo = OrdenTrabajo.new
   end
-
   # GET /orden_trabajos/1/edit
   def edit
+    print "Editttttttttttt"
   end
   # POST /orden_trabajos
   # POST /orden_trabajos.json
-
   def create
     @orden_trabajo = OrdenTrabajo.new(orden_trabajo_params)
+
     respond_to do |format|
       if @orden_trabajo.save
-        format.html { redirect_to @orden_trabajo, notice: 'Orden trabajo was successfully created.' }
-        format.json { render :show, status: :created, location: @orden_trabajo }
+        format.html { redirect_to @orden_trabajo, notice: 'Orden trabajo creada exitosamente!' }
+        format.json { render :show, status: :created, location: @orden_trabajo}
+        format.js 
       else
         format.html { render :new }
         format.json { render json: @orden_trabajo.errors, status: :unprocessable_entity }
+        format.js
       end
     end
+    
   end
 
   # PATCH/PUT /orden_trabajos/1
   # PATCH/PUT /orden_trabajos/1.json
-
   def update
     respond_to do |format|
       if @orden_trabajo.update(orden_trabajo_params)
-        format.html
+        format.html { redirect_to orden_trabajos_path, notice: 'OrdenTrabajo exitosamente actualizada!' }
         format.json { render :show, status: :ok, location: @orden_trabajo }
-        format.js
+        format.js 
       else
-        format.html { render :edit }
+        format.html
         format.json { render json: @orden_trabajo.errors, status: :unprocessable_entity }
+        format.js { render :edit }
       end
     end
   end

@@ -1,0 +1,15 @@
+
+$('.update_ot').bind('ajax:success', function() {
+    2    $(this).closest('tr').fadeOut();
+    3  });
+$('#TablaOrdenesTrabajos').replaceWith(
+    '<tbody id="TablaOrdenesTrabajos"><% @orden_trabajos.each do |orden_trabajo| %><%= simple_form_for orden_trabajo, remote: true do |f| %><tr id="OT_<%orden_trabajo.id%>"><td><%= link_to "#{orden_trabajo.trnum}", copy_path(orden_trabajo.id), :remote => true %></td><td><%= link_to "#{orden_trabajo.nomprod.first(30)}", edit_orden_trabajo_path(orden_trabajo) %></td><td> <%= orden_trabajo.trcan  %> </td><td><%= f.input :estado_actual, as: :select, :collection => ["Pendiente", "Diseño Diego", "Diseño Ismael", "Diseño Eduardo", "Diseño Miguel", "Diseño Santiago", "CTP", "Impresión", "Procesos", "Guillotina o Empaque"], label: false, :default=> "Pendiente" %></td><td><script>$(document).ready(function() {$("#orden_trabajo_procesos_<%=orden_trabajo.id%>").multiselect({allSelectedText: 'Showing All'});});$(function () {$("#orden_trabajo_procesos_<%=orden_trabajo.id%>").change(function () {var ValorSeleccionadoDropdown = $(this).val();$(document).ready(function(){$("#<%=orden_trabajo.id%>").val(ValorSeleccionadoDropdown)});});});$('.datepicker').datepicker({format: 'mm/dd/yyyy',startDate: '-3d'});</script><!-- Multiselect dropdown html --><select id= "orden_trabajo_procesos_<%=orden_trabajo.id%>" multiple="multiple"><% OrdenTrabajo::POST.each do  |elemento_post| %><%if cadenatovector(orden_trabajo.procesos).include?  elemento_post %><option value = <%= elemento_post %> selected ><%= elemento_post %></option><%else%><option value = <%= elemento_post %> ><%= elemento_post %></option><%end%><%end%></select></td><%= f.input :procesos, :as => :hidden, :input_html => { :id => orden_trabajo.id} %><td><%= f.input :observaciones,  label: false,  placeholder: "#{orden_trabajo.fecentr}"  %></td><td><%= f.button :submit, name="CONFIRMAR", :class => "btn btn-primary btn-lg" %></td><td><%= link_to '', orden_trabajo, method: :delete, data: { confirm: 'Estás seguro/a?' }, :remote => true, :class => 'delete_ot btn-lg glyphicon glyphicon-trash' %></td></tr><% end %><% end %></tbody>');
+
+$('#TablaOrdenesTrabajos').html('<%= j render("form") %>');
+
+
+$('.copy_ot').click(function(){
+
+	alert("esta pasando por copy.js.erb!!");
+
+});

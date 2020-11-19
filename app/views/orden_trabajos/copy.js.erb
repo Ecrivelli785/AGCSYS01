@@ -1,0 +1,6 @@
+
+$('.copy_ot').bind('ajax:success', function() {
+  $(this).closest('tr').fadeOut();
+  $(this).closest('tr').fadeIn();
+  alert("esta pasando por COPY.js.erb!!");
+});
