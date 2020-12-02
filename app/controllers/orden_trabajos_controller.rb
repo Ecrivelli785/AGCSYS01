@@ -17,6 +17,10 @@ class OrdenTrabajosController < ApplicationController
     end
   end
 
+  def count
+    @orden_trabajos = OrdenTrabajo.all.count
+  end
+
   def copy
     @ot_actual = OrdenTrabajo.find(params[:id])
     @orden_trabajo = @ot_actual.dup
