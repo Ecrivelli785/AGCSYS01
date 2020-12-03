@@ -17,6 +17,10 @@ class OrdenTrabajosController < ApplicationController
     end
   end
 
+  def count
+    @orden_trabajos = OrdenTrabajo.all.count
+  end
+
   def copy
     @ot_actual = OrdenTrabajo.find(params[:id])
     @orden_trabajo = @ot_actual.dup
@@ -137,7 +141,7 @@ end
   private
     # Use callbacks to share common setup or constraints between actions.
     def listado_trabajo
-      @orden_trabajos = OrdenTrabajo.order('fecentr ASC, clinom ASC').first(10)
+      @orden_trabajos = OrdenTrabajo.order('fecentr ASC, clinom ASC').first(30)
     end
     def set_orden_trabajo
       @orden_trabajo = OrdenTrabajo.find(params[:id])
