@@ -48,7 +48,7 @@
         <th> <%= orden_trabajo.estado_actual %> </th>
         <td><%= orden_trabajo.procesos %></td>
         <td><%= truncate(orden_trabajo.observaciones)%></td>
-        <td><%= orden_trabajo.fecentr%></td>
+        <td> <%= orden_trabajo.fecentr.try(:strftime, ("%B %e"))%> </td>
       </tr>
     <% end %>
   </tbody>
