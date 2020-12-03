@@ -51,7 +51,7 @@
         <td> <%= orden_trabajo.trcan  %> </td>
         <td> <%= orden_trabajo.estado_actual %> </td>
         <td><%= orden_trabajo.procesos %></td>
-        <td><%= orden_trabajo.fecentr%></td>
+        <td><%= orden_trabajo.fecentr.try(:strftime, ("%e %B")) %></td>
         <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
         <td><%= link_to '', orden_trabajo, method: :delete, data: { confirm:
 'Estás seguro/a?' }, :remote => true, :class => 'delete_ot btn-lg glyphicon glyphicon-trash' %></td>

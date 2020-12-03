@@ -41,14 +41,14 @@
   <tbody id="TablaOrdenesTrabajos">
     <% @orden_trabajos.each do |orden_trabajo| %>
       <tr>
-        <td><%= link_to orden_trabajo.trnum, orden_trabajo %></td>
-        <td><%= link_to orden_trabajo.clinom, orden_trabajo %></td>
+        <td><strong><%= link_to orden_trabajo.trnum, orden_trabajo %></strong></td>
+        <td><strong><%= link_to orden_trabajo.clinom, orden_trabajo %></strong></td>
         <td><%= link_to orden_trabajo.nomprod, orden_trabajo %></td>
         <td> <%= orden_trabajo.trcan  %> </td>
         <th> <%= orden_trabajo.estado_actual %> </th>
         <td><%= orden_trabajo.procesos %></td>
         <td><%= truncate(orden_trabajo.observaciones)%></td>
-        <td> <%= orden_trabajo.fecentr.try(:strftime, ("%B %e"))%> </td>
+        <td><strong><%= orden_trabajo.fecentr.try(:strftime, ("%e %B"))%></strong></td>
       </tr>
     <% end %>
   </tbody>
