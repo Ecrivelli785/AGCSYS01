@@ -6,7 +6,7 @@ class OrdenTrabajosController < ApplicationController
   # GET /orden_trabajos.json
 
   def index
-    @orden_trabajos = OrdenTrabajo.all.order('clinom ASC')
+    @orden_trabajos = OrdenTrabajo.all.order('clinom ASC, trnum ASC')
     respond_to do |format|
       format.html
       format.js
