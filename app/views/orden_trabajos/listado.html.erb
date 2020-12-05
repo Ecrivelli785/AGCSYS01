@@ -34,10 +34,10 @@
       <th>Cliente</th>
       <th>Producto</th>
       <th>Cantidad</th>
+      <th>Observaciones</th>
       <th>Estado Actual</th>
       <th>Procesos</th>
       <th>Fecha entrega</th>
-      <th>Observaciones</th>
       </tr>
   </thead>
 
@@ -49,10 +49,10 @@
         <td><%= link_to orden_trabajo.clinom, orden_trabajo %></td>
         <td><%= link_to orden_trabajo.nomprod, orden_trabajo %></td>
         <td> <%= orden_trabajo.trcan  %> </td>
+        <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
         <td> <%= orden_trabajo.estado_actual %> </td>
         <td><%= orden_trabajo.procesos %></td>
         <td><%= orden_trabajo.fecentr.try(:strftime, ("%e %B")) %></td>
-        <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
         <td><%= link_to '', orden_trabajo, method: :delete, data: { confirm:
 'Estás seguro/a?' }, :remote => true, :class => 'delete_ot btn-lg glyphicon glyphicon-trash' %></td>
       </tr>
