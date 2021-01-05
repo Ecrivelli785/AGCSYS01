@@ -1,0 +1,47 @@
+<div class="d-flex justify-content-around">
+  <div class="container">
+      <table class="table table-striped">
+        <h1 class="mt-3"><strong>PM próximo a imprimir</strong></h1>
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Producto</th>
+        </tr>
+      </thead>
+      <tbody>
+    <% @orden_trabajos.each do |orden_trabajo| %>
+       <% if cadenatovector(orden_trabajo.procesos).include? "PM" and orden_trabajo.estado_actual != "Impresión" and orden_trabajo.estado_actual != "Pendiente" and orden_trabajo.estado_actual != "Terminación" and orden_trabajo.estado_actual != "Empaque"%>
+          <tr>
+            <td><%= orden_trabajo.clinom %></td>
+            <td><%= orden_trabajo.nomprod.first(20) %></td>
+            <td>
+        <% end %>
+      <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="container">
+      <table class="table table-striped">
+        <h1 class="mt-3"><strong>PM Listo para imprimir</strong></h1>
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Producto</th>
+        </tr>
+      </thead>
+      <tbody>
+    <% @orden_trabajos.each do |orden_trabajo| %>
+       <% if cadenatovector(orden_trabajo.procesos).include? "PM" and orden_trabajo.estado_actual.include? "Impresión" %>
+          <tr>
+            <td><%= orden_trabajo.clinom %></td>
+            <td><%= orden_trabajo.nomprod.first(20) %></td>
+            <td>
+        <% end %>
+      <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+

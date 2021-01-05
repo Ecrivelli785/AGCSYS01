@@ -2,6 +2,8 @@ class OrdenTrabajosController < ApplicationController
 
   before_action :set_orden_trabajo, only: [:show, :copy, :edit, :update, :destroy]
   before_action :listado_trabajo, only:[:digital, :offset, :post1, :post2, :post3, :post4, :post5, :post6, :post7]
+  before_action :listado_excel1, only:[:excel1]
+
   # GET /orden_trabajos
   # GET /orden_trabajos.json
 
@@ -138,11 +140,51 @@ def post7
 end
 # ------------------------------------------------------------------------
 
+
+def excel1
+     @orden_trabajos = OrdenTrabajo.all
+    respond_to do |format|
+      format.html
+      format.js
+      format.json { render json: @orden_trabajos}
+             format.pdf do
+        render pdf: 'excel/pdf', pdf: 'excel'
+      end
+   end
+end
+
+
+
+def excel
+    @orden_trabajos = OrdenTrabajo.all.order('clinom ASC')
+    respond_to do |format|
+      format.html
+      format.js
+      format.json { render json: @orden_trabajos}
+      format.pdf do
+        render pdf: 'excel/pdf', pdf: 'excel',
+        :orientation => 'landscape'
+      end
+    end
+  end
+
+
+
+
+
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def listado_trabajo
       @orden_trabajos = OrdenTrabajo.order('fecentr ASC, clinom ASC').first(30)
     end
+
+    def listado_excel1
+      @orden_trabajos = OrdenTrabajo.all
+    end
+
     def set_orden_trabajo
       @orden_trabajo = OrdenTrabajo.find(params[:id])
     end

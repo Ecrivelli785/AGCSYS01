@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/orden_trabajos/:id/copy', to: 'orden_trabajos#copy', as: :copy
 
   # Rutas creadas para cada pantalla
+    get 'excel', to: 'orden_trabajos#excel', as: :excel
+
     get 'listado', to: 'orden_trabajos#listado', as: :listado
     get 'offset', to: 'orden_trabajos#offset', as: :offset
     get 'digital', to: 'orden_trabajos#digital', as: :digital
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
     get 'post5', to: 'orden_trabajos#post5', as: :post5
     get 'post6', to: 'orden_trabajos#post6', as: :post6
     get 'post7', to: 'orden_trabajos#post7', as: :post7
+    get 'excel1', to: 'orden_trabajos#excel1', as: :excel1
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
