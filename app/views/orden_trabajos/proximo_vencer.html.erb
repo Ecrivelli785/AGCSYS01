@@ -1,0 +1,27 @@
+ <div class=" block-center mx-5">
+      <table class="table table-striped">
+        <h3 class="my-3 text-center"><strong>TRABAJOS   PROXIMOS   A   VENCER</strong></h3>
+      <thead>
+        <tr>
+          <th>OT</th>
+          <th>Cliente</th>
+          <th>Producto</th>
+          <th>Observación</th>
+          <th>Fecha Entrega</th>
+        </tr>
+      </thead>
+      <tbody>
+    <% @orden_trabajos.each do |orden_trabajo| %>
+          <tr>
+            <td> <%= orden_trabajo.trnum %></td>
+            <td><%= orden_trabajo.clinom %></td>
+            <td><%= orden_trabajo.nomprod.first(20) %></td>
+            <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
+            <td><%= orden_trabajo.fecentr %></td>
+            <td>
+        <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
