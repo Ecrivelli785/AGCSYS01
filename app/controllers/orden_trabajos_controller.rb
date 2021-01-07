@@ -1,13 +1,14 @@
 class OrdenTrabajosController < ApplicationController
 
   before_action :set_orden_trabajo, only: [:show, :copy, :edit, :update, :destroy]
-  before_action :listado_trabajo, only:[:digital, :offset, :post1, :post2, :post3, :post4, :post5, :post6, :post7]
+  before_action :listado_trabajo, only:[:digital, :offset, :post1, :post2, :post3, :post4, :post5, :post6, :post7, :proximo_vencer]
   before_action :listado_excel1, only:[:excel1]
 
   # GET /orden_trabajos
   # GET /orden_trabajos.json
 
   def index
+    @contador = OrdenTrabajo.all.count
     @orden_trabajos = OrdenTrabajo.all.order('clinom ASC, trnum ASC')
     respond_to do |format|
       format.html
@@ -19,9 +20,6 @@ class OrdenTrabajosController < ApplicationController
     end
   end
 
-  def count
-    @orden_trabajos = OrdenTrabajo.all.count
-  end
 
   def copy
     @ot_actual = OrdenTrabajo.find(params[:id])
@@ -45,6 +43,8 @@ class OrdenTrabajosController < ApplicationController
 
 
   def listado
+
+    @proximo_vencimiento_ot = OrdenTrabajo.order('fecentr ASC, clinom ASC').first(15)
     @orden_trabajos = OrdenTrabajo.all.order('clinom ASC')
     respond_to do |format|
       format.html
@@ -118,6 +118,8 @@ class OrdenTrabajosController < ApplicationController
     end
   end
 
+
+
 # ESTE SECTOR DEL CONTROLADOR ES PARA LAS DIFERENTES VIEWS DE IMPRESIÓN Y POST
 # ------------------------------------------------------------------------
 def digital
@@ -138,10 +140,15 @@ def post6
 end
 def post7
 end
+# FIN DEL VIEW PARA LAS PANTALLAS
 # ------------------------------------------------------------------------
 
 
-def excel1
+
+
+# lISTADO DE LOS TRABAJOS PROXIMOS Y LISTOS PARA ENTRAR EN MÁQUINA
+# -----------------------------------------------------------------
+def planificacionTaller
      @orden_trabajos = OrdenTrabajo.all
     respond_to do |format|
       format.html
@@ -154,8 +161,8 @@ def excel1
 end
 
 
-
-def excel
+# lISTADO EN PDF DE LOS TRABAJOS PROXIMOS Y LISTOS PARA ENTRAR EN MÁQUINA
+def planificacionTallerPDF
     @orden_trabajos = OrdenTrabajo.all.order('clinom ASC')
     respond_to do |format|
       format.html
@@ -168,9 +175,8 @@ def excel
     end
   end
 
-
-
-
+# FIN DEL LISTADO DE TRABAJOS PROXIMOS Y LISTOS PARA ENTRAR EN MÁQUINA
+# ----------------------------------------------------------------------------
 
 
 

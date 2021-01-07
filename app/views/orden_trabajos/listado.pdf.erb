@@ -24,6 +24,7 @@
 
 
 <table class="table table-striped  m-2">
+     <strong class="float-right align-text-center text-uppercase text-center"><h2><%= Date.today.try(:strftime, ('%d-%m-%Y'))%></h2></strong>
   <thead>
     <tr>
       <th>Ot</th>
@@ -48,9 +49,42 @@
         <th> <%= orden_trabajo.estado_actual %> </th>
         <td><%= orden_trabajo.procesos %></td>
         <td><%= truncate(orden_trabajo.observaciones)%></td>
-        <td><strong><%= orden_trabajo.fecentr.try(:strftime, ("%e %B"))%></strong></td>
+        <td><strong><%= orden_trabajo.fecentr.try(:strftime, ('%d-%m'))%></strong></td>
       </tr>
     <% end %>
+
+
+     <div class=" block-center mx-5">
+      <table class="table table-striped">
+<br>
+<br>
+<br>
+        <h3 class="my-3 text-center "><strong>TRABAJOS   PROXIMOS   A   VENCER</strong></h3>
+      <thead>
+        <tr>
+          <th>OT</th>
+          <th>Cliente</th>
+          <th>Producto</th>
+          <th>Observación</th>
+          <th>Fecha Entrega</th>
+        </tr>
+      </thead>
+      <tbody>
+    <% @proximo_vencimiento_ot.each do |orden_trabajo| %>
+          <tr>
+            <td> <%= orden_trabajo.trnum %></td>
+            <td><%= orden_trabajo.clinom %></td>
+            <td><%= orden_trabajo.nomprod.first(20) %></td>
+            <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
+            <td><%= orden_trabajo.fecentr %></td>
+            <td>
+        <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
   </tbody>
   <!--Fin Tabla-->
 </table>

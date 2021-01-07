@@ -4,8 +4,13 @@ Rails.application.routes.draw do
   resources :orden_trabajos
   get '/orden_trabajos/:id/copy', to: 'orden_trabajos#copy', as: :copy
 
+
+  get 'proximo_vencer', to: 'orden_trabajos#proximo_vencer', as: :proximo_vencer
+  get 'planificacionTaller', to: 'orden_trabajos#planificacionTaller', as: :planificacionTaller
+  get 'planificacionTallerPDF', to: 'orden_trabajos#planificacionTallerPDF', as: :planificacionTallerPDF
+
+
   # Rutas creadas para cada pantalla
-    get 'excel', to: 'orden_trabajos#excel', as: :excel
 
     get 'listado', to: 'orden_trabajos#listado', as: :listado
     get 'offset', to: 'orden_trabajos#offset', as: :offset
@@ -17,8 +22,6 @@ Rails.application.routes.draw do
     get 'post5', to: 'orden_trabajos#post5', as: :post5
     get 'post6', to: 'orden_trabajos#post6', as: :post6
     get 'post7', to: 'orden_trabajos#post7', as: :post7
-    get 'excel1', to: 'orden_trabajos#excel1', as: :excel1
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :orden_trabajos_imports, only: [:new, :create]
