@@ -149,7 +149,7 @@ end
 # lISTADO DE LOS TRABAJOS PROXIMOS Y LISTOS PARA ENTRAR EN MÁQUINA
 # -----------------------------------------------------------------
 def planificacionTaller
-     @orden_trabajos = OrdenTrabajo.all('clinom ASC, trnum ASC')
+     @orden_trabajos = OrdenTrabajo.all
     respond_to do |format|
       format.html
       format.js
@@ -188,7 +188,7 @@ def planificacionTallerPDF
     end
 
     def listado_excel1
-      @orden_trabajos = OrdenTrabajo.all('clinom ASC, trnum ASC')
+      @orden_trabajos = OrdenTrabajo.all
     end
 
     def set_orden_trabajo
