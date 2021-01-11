@@ -45,7 +45,7 @@ class OrdenTrabajosController < ApplicationController
   def listado
 
     @proximo_vencimiento_ot = OrdenTrabajo.order('fecentr ASC, clinom ASC').first(15)
-    @orden_trabajos = OrdenTrabajo.all.order('clinom ASC')
+    @orden_trabajos = OrdenTrabajo.all.order('clinom ASC, trnum ASC')
     respond_to do |format|
       format.html
       format.js
@@ -149,7 +149,7 @@ end
 # lISTADO DE LOS TRABAJOS PROXIMOS Y LISTOS PARA ENTRAR EN MÁQUINA
 # -----------------------------------------------------------------
 def planificacionTaller
-     @orden_trabajos = OrdenTrabajo.all
+     @orden_trabajos = OrdenTrabajo.all('clinom ASC, trnum ASC')
     respond_to do |format|
       format.html
       format.js
@@ -188,7 +188,7 @@ def planificacionTallerPDF
     end
 
     def listado_excel1
-      @orden_trabajos = OrdenTrabajo.all
+      @orden_trabajos = OrdenTrabajo.all('clinom ASC, trnum ASC')
     end
 
     def set_orden_trabajo
