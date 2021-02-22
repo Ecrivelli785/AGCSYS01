@@ -44,7 +44,7 @@ class OrdenTrabajosController < ApplicationController
 
   def listado
 
-    @proximo_vencimiento_ot = OrdenTrabajo.order('fecentr ASC, clinom ASC').first(15)
+    @proximo_vencimiento_ot = OrdenTrabajo.order('fecentr ASC, clinom ASC').first(30)
     @orden_trabajos = OrdenTrabajo.all.order('clinom ASC, trnum ASC')
     respond_to do |format|
       format.html
