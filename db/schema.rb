@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2020_09_27_200403) do
-
+ActiveRecord::Schema.define(version: 2021_02_23_114403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,9 +35,9 @@ ActiveRecord::Schema.define(version: 2020_09_27_200403) do
     t.string "observaciones"
     t.string "estado_actual"
     t.boolean "estado"
+    t.date "deadline"
     t.index ["clinom"], name: "index_orden_trabajos_on_clinom"
     t.index ["trnum"], name: "index_orden_trabajos_on_trnum"
-
   end
 
 end
