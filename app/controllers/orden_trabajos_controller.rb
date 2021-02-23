@@ -44,7 +44,7 @@ class OrdenTrabajosController < ApplicationController
 
   def listado
 
-    @proximo_vencimiento_ot = OrdenTrabajo.order('fecentr ASC, clinom ASC').first(15)
+    @proximo_vencimiento_ot = OrdenTrabajo.order('deadline ASC, clinom ASC').first(30)
     @orden_trabajos = OrdenTrabajo.all.order('clinom ASC, trnum ASC')
     respond_to do |format|
       format.html
@@ -184,7 +184,7 @@ def planificacionTallerPDF
   private
     # Use callbacks to share common setup or constraints between actions.
     def listado_trabajo
-      @orden_trabajos = OrdenTrabajo.order('fecentr ASC, clinom ASC').first(30)
+      @orden_trabajos = OrdenTrabajo.order('deadline ASC, clinom ASC').first(30)
     end
 
     def listado_excel1
@@ -196,6 +196,6 @@ def planificacionTallerPDF
     end
     # Only allow a list of trusted parameters through.
     def orden_trabajo_params
-      params.require(:orden_trabajo).permit(:trnum, :clinom, :nomprod,  :fecentr, :procesos, :observaciones, :estado_actual, :estado, :trcan, :gramaje, :papel, :colores, :pliego)
+      params.require(:orden_trabajo).permit(:trnum, :clinom, :nomprod,  :fecentr, :deadline, :procesos, :observaciones, :estado_actual, :estado, :trcan, :gramaje, :papel, :colores, :pliego)
     end
 end

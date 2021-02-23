@@ -17,7 +17,7 @@ wb.styles do |style|
     #sheet.add_row ["id", "ot", "cliente", "producto", "cantidad", "papel", "gramaje", "colores", "pliego"], style: heading
     # Create entries for each item
     @orden_trabajos.each do |orden_trabajo|
-      sheet.add_row [orden_trabajo.id, orden_trabajo.trnum, orden_trabajo.clinom, orden_trabajo.nomprod, orden_trabajo.trcan, orden_trabajo.papel, orden_trabajo.gramaje,  orden_trabajo.colores,  orden_trabajo.pliego,  orden_trabajo.procesos, orden_trabajo.fecentr]
+      sheet.add_row [orden_trabajo.id, orden_trabajo.trnum, orden_trabajo.clinom, orden_trabajo.nomprod, orden_trabajo.trcan, orden_trabajo.papel, orden_trabajo.gramaje,  orden_trabajo.colores,  orden_trabajo.pliego,  orden_trabajo.procesos]
     end
   end
 end

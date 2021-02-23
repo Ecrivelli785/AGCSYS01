@@ -19,7 +19,6 @@ export default class extends Controller {
             $(document).ready(function(){$(data.id).val(ValorSeleccionadoDropdown)});
           });
         });
-        $('.datepicker').datepicker({format: 'mm/dd/yyyy',startDate: '-3d'});
       });
       $('.delete_ot').bind('ajax:success', function() {
   $(this).closest('tr').fadeOut();

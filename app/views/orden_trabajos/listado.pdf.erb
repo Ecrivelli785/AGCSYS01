@@ -49,7 +49,7 @@
         <th> <%= orden_trabajo.estado_actual %> </th>
         <td><%= orden_trabajo.procesos %></td>
         <td><%= truncate(orden_trabajo.observaciones)%></td>
-        <td><strong><%= orden_trabajo.fecentr.try(:strftime, ('%d-%m'))%></strong></td>
+        <td><strong><%= orden_trabajo.deadline.try(:strftime, ('%d-%m'))%></strong></td>
       </tr>
     <% end %>
 
@@ -76,7 +76,7 @@
             <td><%= orden_trabajo.clinom %></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
             <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
-            <td><%= orden_trabajo.fecentr %></td>
+            <td><%= orden_trabajo.deadline %></td>
             <td>
         <% end %>
         </tr>
