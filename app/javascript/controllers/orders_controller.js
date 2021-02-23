@@ -1,3 +1,4 @@
+
 import { Controller } from "stimulus";
 
 export default class extends Controller {
@@ -25,4 +26,8 @@ export default class extends Controller {
   $(this).closest('tr').fadeOut();
 });
   }
+
+
+
+}
 
