@@ -28,7 +28,7 @@
     <% @orden_trabajos.each do |orden_trabajo| %>
        <% if cadenatovector(orden_trabajo.procesos).include? "Zechini" %>
           <tr>
-            <td><%= orden_trabajo.clinom %></td>
+            <td><strong><%= orden_trabajo.clinom %></strong></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
             <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
             <td><%= orden_trabajo.deadline %></td>
@@ -54,7 +54,7 @@
         <% if cadenatovector(orden_trabajo.procesos).include? "Alzadora" %>
 
           <tr>
-            <td><%= orden_trabajo.clinom %></td>
+            <td><strong><%= orden_trabajo.clinom %></strong></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
             <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
             <td> <%= orden_trabajo.deadline %></td>
@@ -81,7 +81,7 @@
         <% if cadenatovector(orden_trabajo.procesos).include? "C.Alambre" %>
 
           <tr>
-            <td><%= orden_trabajo.clinom %></td>
+            <td><strong><%= orden_trabajo.clinom %></strong></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
             <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
             <td> <%= orden_trabajo.deadline %></td>
