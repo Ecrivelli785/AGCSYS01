@@ -184,7 +184,7 @@ def planificacionTallerPDF
   private
     # Use callbacks to share common setup or constraints between actions.
     def listado_trabajo
-      @orden_trabajos = OrdenTrabajo.order('deadline ASC, clinom ASC').first(30)
+      @orden_trabajos = OrdenTrabajo.order('deadline ASC, clinom').first(30)
     end
 
     def listado_excel1
