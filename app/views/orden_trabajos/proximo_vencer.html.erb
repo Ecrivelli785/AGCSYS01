@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody>
-    <% @orden_trabajos.each do |orden_trabajo| %>
+    <% @orden_trabajos.each(30) do |orden_trabajo| %>
           <tr>
             <td> <%= orden_trabajo.trnum %></td>
             <td><%= orden_trabajo.clinom %></td>
