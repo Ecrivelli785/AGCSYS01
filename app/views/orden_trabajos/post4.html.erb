@@ -26,7 +26,8 @@
       </thead>
       <tbody>
     <% @orden_trabajos.each do |orden_trabajo| %>
-       <% if cadenatovector(orden_trabajo.procesos).include? "Duplo" %>
+        <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos).include? "Duplo" %>
+
           <tr>
             <td><strong><%= orden_trabajo.clinom %></strong></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
@@ -51,8 +52,7 @@
       </thead>
       <tbody>
     <% @orden_trabajos.each do |orden_trabajo| %>
-        <% if cadenatovector(orden_trabajo.procesos).include? "C.Hilo" %>
-
+        <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos).include? "C.Hilo" %>
           <tr>
             <td><strong><%= orden_trabajo.clinom %></strong></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
@@ -78,8 +78,7 @@
       </thead>
       <tbody>
     <% @orden_trabajos.each do |orden_trabajo| %>
-        <% if cadenatovector(orden_trabajo.procesos).include? "Binder" %>
-
+        <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos).include? "Binder" %>
           <tr>
             <td><strong><%= orden_trabajo.clinom %></strong></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>

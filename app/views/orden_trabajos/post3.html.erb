@@ -22,7 +22,7 @@
       </thead>
       <tbody>
     <% @orden_trabajos.each do |orden_trabajo| %>
-    <% if cadenatovector(orden_trabajo.procesos).include? "Baum"%>
+        <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos).include? "Baum" %>
           <tr>
             <td><strong><%= orden_trabajo.clinom %></strong></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
@@ -47,8 +47,7 @@
       </thead>
       <tbody>
     <% @orden_trabajos.each do |orden_trabajo| %>
-    <% if cadenatovector(orden_trabajo.procesos).include? "Renz" %>
-
+        <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos).include? "Renz" %>
           <tr>
             <td><strong><%= orden_trabajo.clinom %></strong></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
