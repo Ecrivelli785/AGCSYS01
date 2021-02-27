@@ -1,13 +1,20 @@
+
+<div class="d-flex justify-content-around bg-primary sticky-top my-3">
+      <div class="">
+        <h1 class="mt-1 "><strong>TRABAJOS   PROXIMOS   A   VENCER</strong></h1>
+      </div>
+</div>
+
+
  <div class=" block-center mx-5">
       <table class="table table-striped">
-        <h3 class="my-3 text-center"><strong>TRABAJOS   PROXIMOS   A   VENCER</strong></h3>
       <thead>
-        <tr>
-          <th>OT</th>
-          <th>Cliente</th>
-          <th>Producto</th>
-          <th>Observación</th>
-          <th>Fecha Entrega</th>
+        <tr class="bg-danger">
+          <th><h4 class="font-weight-bold text-white">OT</h4></th>
+          <th><h4 class="font-weight-bold text-white">Cliente</h4></th>
+          <th><h4 class="font-weight-bold text-white">Producto</h4></th>
+          <th><h4 class="font-weight-bold text-white">Observación</h4></th>
+          <th><h4 class="font-weight-bold text-white"> Fecha límite</h4></th>
         </tr>
       </thead>
       <tbody>
@@ -26,9 +33,27 @@
   </div>
 
 <script>
-//Using setTimeout to execute a function after 5 seconds.
+
+
+//Using setTimeout to auto-scroll.
+
+//scroll to bottom
+setInterval(function(){
+
+//time to scroll to bottom
+  $("html, body").animate({scrollTop: $(document).height()},25000);
+
+//scroll to top
 setTimeout(function () {
-   //Redirect with JavaScript
+  $('html, body').animate({scrollTop:0},1);
+},1);//call every 2000 miliseconds
+},1)//call every 2000 miliseconds
+
+setTimeout(function () {
+//    //Redirect with JavaScript
    window.location.href= 'http://planillaot.herokuapp.com/post1';
+
 },  25000);
+;
+
 </script>
