@@ -22,7 +22,7 @@
       </thead>
       <tbody>
     <% @orden_trabajos.each do |orden_trabajo| %>
-        <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos).include? "Buv" %>
+        <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos).include? "Lam" %>
           <tr>
             <td><strong><%= orden_trabajo.clinom %></strong></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
@@ -47,7 +47,7 @@
       </thead>
       <tbody>
     <% @orden_trabajos.each do |orden_trabajo| %>
-        <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos).include? "Lam" %>
+        <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos).include? "Buv" %>
           <tr>
             <td><strong><%= orden_trabajo.clinom %></strong></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
@@ -69,7 +69,7 @@
 setInterval(function(){
 
 //time to scroll to bottom
-  $("html, body").animate({scrollTop: $(document).height()},25000);
+  $("html, body").animate({scrollTop: $(document).height()},70000);
 
     //scroll to top
 setTimeout(function () {
