@@ -14,6 +14,7 @@
       <table class="table table-striped">
       <thead>
         <tr class="bg-danger">
+          <th><h4 class="font-weight-bold text-white">OT</h4></th>
           <th><h4 class="font-weight-bold text-white">Cliente</h4></th>
           <th><h4 class="font-weight-bold text-white">Producto</h4></th>
           <th><h4 class="font-weight-bold text-white">Observación</h4></th>
@@ -24,6 +25,7 @@
     <% @orden_trabajos.each do |orden_trabajo| %>
         <% if orden_trabajo.estado_actual == "Impresión" and cadenatovector(orden_trabajo.procesos).include? "Ko" %>
           <tr>
+            <td> <%= orden_trabajo.trnum %> </td>
             <td><strong><%= orden_trabajo.clinom %></strong></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
             <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
@@ -39,6 +41,7 @@
       <table class="table table-striped">
       <thead>
         <tr class="bg-danger">
+          <th><h4 class="font-weight-bold text-white">OT</h4></th>
           <th><h4 class="font-weight-bold text-white">Cliente</h4></th>
           <th><h4 class="font-weight-bold text-white">Producto</h4></th>
           <th><h4 class="font-weight-bold text-white">Observación</h4></th>
@@ -49,6 +52,7 @@
     <% @orden_trabajos.each do |orden_trabajo| %>
         <% if orden_trabajo.estado_actual == "Impresión" and cadenatovector(orden_trabajo.procesos).include? "Xe" %>
           <tr>
+            <td> <%= orden_trabajo.trnum %> </td>
             <td><strong><%= orden_trabajo.clinom %></strong></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
             <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
@@ -80,7 +84,7 @@ setTimeout(function () {
 
 setTimeout(function () {
 //    //Redirect with JavaScript
-   window.location.href= 'http://planillaot.herokuapp.com/offset';
+   window.location.href= 'http://planillaot.herokuapp.com/offset1';
 
 },  30000);
 ;

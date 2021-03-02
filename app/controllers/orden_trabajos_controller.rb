@@ -1,7 +1,7 @@
 class OrdenTrabajosController < ApplicationController
 
   before_action :set_orden_trabajo, only: [:show, :copy, :edit, :update, :destroy]
-  before_action :listado_trabajo, only:[:digital, :offset, :post1, :post2, :post3, :post4, :post5, :post6, :post7, :proximo_vencer]
+  before_action :listado_trabajo, only:[:digital, :offset1, :offset2, :post1, :post2, :post3, :post4, :post5, :post6, :post7, :proximo_vencer]
   before_action :listado_excel1, only:[:excel1]
 
   # GET /orden_trabajos
@@ -124,7 +124,9 @@ class OrdenTrabajosController < ApplicationController
 # ------------------------------------------------------------------------
 def digital
 end
-def offset
+def offset1
+end
+def offset2
 end
 def post1
 end
