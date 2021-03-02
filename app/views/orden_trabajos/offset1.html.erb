@@ -24,7 +24,7 @@
       </thead>
       <tbody>
     <% @orden_trabajos.each do |orden_trabajo| %>
-       <% if cadenatovector(orden_trabajo.procesos).include? "SM" %>
+        <% if orden_trabajo.estado_actual == "Impresión" and cadenatovector(orden_trabajo.procesos).include? "SM" %>
           <tr>
             <td><%= orden_trabajo.trnum %> </td>
             <td><strong><%= orden_trabajo.clinom %></strong></td>
@@ -53,17 +53,20 @@
       </thead>
       <tbody>
     <% @orden_trabajos.each do |orden_trabajo| %>
-        <% if cadenatovector(orden_trabajo.procesos).include? "PM" %>
+
+
+    <% if orden_trabajo.estado_actual == "Impresión" and cadenatovector(orden_trabajo.procesos).include? "PM" %>
+
+
           <tr>
             <td><%= orden_trabajo.trnum %> </td>
             <td><strong><%= orden_trabajo.clinom %></strong></td>
             <td><%= orden_trabajo.trcan %> </td>
             <td><%= orden_trabajo.colores %> </td>
             <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
-            <td><%= orden_trabajo.deadline %></td>
-            <td>
+            <td> <%= orden_trabajo.deadline %></td>
+          <% end %>
         <% end %>
-      <% end %>
         </tr>
       </tbody>
     </table>
@@ -81,7 +84,8 @@
 setInterval(function(){
 
 //time to scroll to bottom
-  $("html, body").animate({scrollTop: $(document).height()},50000);
+
+  $("html, body").animate({scrollTop: $(document).height()},70000);
 
 //scroll to top
 setTimeout(function () {

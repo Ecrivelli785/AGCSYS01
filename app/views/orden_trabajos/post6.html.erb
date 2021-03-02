@@ -34,7 +34,7 @@
       </thead>
       <tbody>
     <% @orden_trabajos.each do |orden_trabajo| %>
-       <% if orden_trabajo.estado_actual == "Guillotina/Empaque" %>
+        <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos).include? "Guillotina" %>
           <tr>
             <td><strong><%= orden_trabajo.clinom %></strong></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
@@ -59,7 +59,8 @@
       </thead>
       <tbody>
     <% @orden_trabajos.each do |orden_trabajo| %>
-        <% if cadenatovector(orden_trabajo.procesos).include? "T.Manual" %>
+        <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos).include? "T.Manual" %>
+
 
           <tr>
             <td><strong><%= orden_trabajo.clinom %></strong></td>
@@ -86,8 +87,7 @@
       </thead>
       <tbody>
     <% @orden_trabajos.each do |orden_trabajo| %>
-        <% if cadenatovector(orden_trabajo.procesos).include? "Otros" %>
-
+        <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos).include? "Otros" %>
           <tr>
             <td><strong><%= orden_trabajo.clinom %></strong></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
@@ -114,7 +114,8 @@
 setInterval(function(){
 
 //time to scroll to bottom
-  $("html, body").animate({scrollTop: $(document).height()},45000);
+
+  $("html, body").animate({scrollTop: $(document).height()},70000);
 
 //scroll to top
 setTimeout(function () {
