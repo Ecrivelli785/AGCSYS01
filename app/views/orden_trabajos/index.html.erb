@@ -29,6 +29,8 @@
       <th>Producto</th>
       <th>Cantidad</th>
       <th>Estado actual</th>
+      <th>Estado actual</th>
+
       <th>Proceso</th>
       <th>Fecha entrega</th>
       <th>Observaciones</th>
@@ -52,6 +54,14 @@
               <%= f.input :estado_actual, as: :select, :collection => ["Pendiente", "Diego diseño", "Ismael diseño", "Edu diseño", "Miguel diseño", "Santiago diseño", "Control", "CTP", "Impresión", "Terminación", "Empaque"], label: false, :default=> "Pendiente" %>
             </td>
             <td>
+
+              <%= f.input :estado_actual, as: :select, :collection => ["Pendiente", "Diego diseño", "Ismael diseño", "Edu diseño", "Miguel diseño", "Santiago diseño", "Control", "CTP", "Impresión", "Terminación", "Empaque"], label: false, :default=> "Pendiente" %>
+
+
+            </td>
+
+            <td>
+
               <script>
                 // Multiselect dropdown orden_trabajo.post -->
                 $(document).ready(function() {
