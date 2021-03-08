@@ -26,8 +26,8 @@
     <% @orden_trabajos.each do |orden_trabajo| %>
         <% if orden_trabajo.estado_actual == "Impresión" and cadenatovector(orden_trabajo.procesos).include? "SM" %>
           <tr>
-            <td><%= orden_trabajo.trnum %> </td>
-            <td><strong><%= orden_trabajo.clinom %></strong></td>
+            <td><strong><%= orden_trabajo.trnum %></strong></td>
+            <td><%= orden_trabajo.clinom %></td>
             <td><%= orden_trabajo.trcan %> </td>
             <td><%= orden_trabajo.colores %> </td>
             <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
@@ -59,8 +59,8 @@
 
 
           <tr>
-            <td><%= orden_trabajo.trnum %> </td>
-            <td><strong><%= orden_trabajo.clinom %></strong></td>
+            <td><strong><%= orden_trabajo.trnum %></strong></td>
+            <td><%= orden_trabajo.clinom %></td>
             <td><%= orden_trabajo.trcan %> </td>
             <td><%= orden_trabajo.colores %> </td>
             <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
