@@ -26,17 +26,21 @@
       <table class="table table-striped">
       <thead>
         <tr class="bg-danger">
+          <th><h4 class="font-weight-bold text-white">OT</h4></th>
           <th><h4 class="font-weight-bold text-white">Cliente</h4></th>
           <th><h4 class="font-weight-bold text-white">Producto</h4></th>
           <th><h4 class="font-weight-bold text-white">Observación</h4></th>
           <th><h4 class="font-weight-bold text-white"> Fecha límite</h4></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
     <% @orden_trabajos.each do |orden_trabajo| %>
         <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos).include? "Guillotina" %>
           <tr>
-            <td><strong><%= orden_trabajo.clinom %></strong></td>
+
+            <td><strong><%= orden_trabajo.trnum %></strong></td>
+            <td><%= orden_trabajo.clinom %></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
             <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
             <td><%= orden_trabajo.deadline %></td>
@@ -51,6 +55,7 @@
       <table class="table table-striped">
       <thead>
         <tr class="bg-danger">
+          <th><h4 class="font-weight-bold text-white">OT</h4></th>
           <th><h4 class="font-weight-bold text-white">Cliente</h4></th>
           <th><h4 class="font-weight-bold text-white">Producto</h4></th>
           <th><h4 class="font-weight-bold text-white">Observación</h4></th>
@@ -63,7 +68,8 @@
 
 
           <tr>
-            <td><strong><%= orden_trabajo.clinom %></strong></td>
+            <td><strong><%= orden_trabajo.trnum %></strong></td>
+            <td><%= orden_trabajo.clinom %></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
             <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
             <td> <%= orden_trabajo.deadline %></td>
@@ -79,6 +85,7 @@
       <table class="table table-striped">
       <thead>
         <tr class="bg-danger">
+          <th><h4 class="font-weight-bold text-white">OT</h4></th>
           <th><h4 class="font-weight-bold text-white">Cliente</h4></th>
           <th><h4 class="font-weight-bold text-white">Producto</h4></th>
           <th><h4 class="font-weight-bold text-white">Observación</h4></th>
@@ -89,7 +96,8 @@
     <% @orden_trabajos.each do |orden_trabajo| %>
         <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos).include? "Otros" %>
           <tr>
-            <td><strong><%= orden_trabajo.clinom %></strong></td>
+            <td><strong><%= orden_trabajo.trnum %></strong></td>
+            <td><%= orden_trabajo.clinom %></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
             <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
             <td> <%= orden_trabajo.deadline %></td>
