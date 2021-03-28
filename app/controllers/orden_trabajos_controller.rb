@@ -187,6 +187,11 @@ def planificacionTallerPDF
     # Use callbacks to share common setup or constraints between actions.
     def listado_trabajo
       @orden_trabajos = OrdenTrabajo.order('deadline, clinom')
+       respond_to do |format|
+      format.html
+      format.js
+      format.json { render json: @orden_trabajos}
+    end
     end
 
     def listado_excel1
@@ -198,6 +203,6 @@ def planificacionTallerPDF
     end
     # Only allow a list of trusted parameters through.
     def orden_trabajo_params
-      params.require(:orden_trabajo).permit(:trnum, :clinom, :nomprod,  :fecentr, :deadline, :procesos, :observaciones, :estado_actual, :estado, :trcan, :gramaje, :papel, :colores, :pliego)
+      params.require(:orden_trabajo).permit(:trnum, :clinom, :nomprod,  :fecentr, :deadline, :procesos, :observaciones, :priority, :estado_actual, :estado, :trcan, :gramaje, :papel, :colores, :pliego)
     end
 end

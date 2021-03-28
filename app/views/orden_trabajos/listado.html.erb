@@ -4,7 +4,6 @@
     <div class="row">
     <div class="col-sm mr-5 pr-5"><h3> <strong>Listados de trabajos en el taller</strong></h3></div>
     <div class="col-sm ml-5"><h3><%= link_to 'Descargar pdf', listado_path(format: 'pdf'), :class => 'btn btn-success', :target => 'blank' %></h3></div>
-    <div class="col-sm ml-5"><h3><%= link_to 'Descargar Excel', listado_path(format: 'xlsx'), :class => 'btn btn-success'  %></h3></div>
     <div class="col-sm ml-5 mb-5"><h3><%= link_to 'Importar Excel', orden_trabajos_imports_new_path , :class => 'btn btn-primary' %></h3></div>
   </div>
 </div>

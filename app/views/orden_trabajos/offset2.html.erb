@@ -13,7 +13,7 @@
   <div class="container">
       <table class="table table-striped">
       <thead>
-        <tr class="bg-danger">
+        <tr class="bg-dark">
           <th><h4 class="font-weight-bold text-white">OT</h4></th>
           <th><h4 class="font-weight-bold text-white">Cliente</h4></th>
           <th><h4 class="font-weight-bold text-white">Cantidad</h4></th>
@@ -26,7 +26,16 @@
     <% @orden_trabajos.each do |orden_trabajo| %>
        <% if cadenatovector(orden_trabajo.procesos).include? "GTO" %>
           <tr>
-            <td><strong><%= orden_trabajo.trnum %></strong></td>
+
+
+              <% if orden_trabajo.priority.eql? "Alta" %>
+                <td style="background-color: #FF0000"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% elsif orden_trabajo.priority.eql? "Media"  %>
+                <td  style="background-color:#FFFF00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% else orden_trabajo.priority.eql? "Baja" %>
+                <td  style="background-color:#7CFC00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+            <% end %>
+
             <td><%= orden_trabajo.clinom %></td>
             <td><%= orden_trabajo.trcan %> </td>
             <td><%= orden_trabajo.colores %> </td>
@@ -42,7 +51,7 @@
     <div class="container">
       <table class="table table-striped">
       <thead>
-        <tr class="bg-danger">
+        <tr class="bg-dark">
           <th><h4 class="font-weight-bold text-white">OT</h4></th>
           <th><h4 class="font-weight-bold text-white">Cliente</h4></th>
           <th><h4 class="font-weight-bold text-white">Cantidad</h4></th>
@@ -55,7 +64,15 @@
     <% @orden_trabajos.each do |orden_trabajo| %>
         <% if cadenatovector(orden_trabajo.procesos).include? "SORZ" %>
           <tr>
-            <td><strong><%= orden_trabajo.trnum %></strong></td>
+
+              <% if orden_trabajo.priority.eql? "Alta" %>
+                <td style="background-color: #FF0000"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% elsif orden_trabajo.priority.eql? "Media"  %>
+                <td  style="background-color:#FFFF00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% else orden_trabajo.priority.eql? "Baja" %>
+                <td  style="background-color:#7CFC00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+            <% end %>
+
             <td><%= orden_trabajo.clinom %></td>
             <td><%= orden_trabajo.trcan %> </td>
             <td><%= orden_trabajo.colores %> </td>
