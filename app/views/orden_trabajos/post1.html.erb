@@ -24,13 +24,13 @@
       </thead>
       <tbody>
     <% @orden_trabajos.each do |orden_trabajo| %>
-        <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos).include? "Lam" %>
+        <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos) == "Lam" %>
           <tr>
-             <% if orden_trabajo.priority.include? "Alta" %>
+             <% if orden_trabajo.priority == "Alta" %>
                 <td style="background-color: #FF0000"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
-              <% elsif orden_trabajo.priority.include? "Media"  %>
+              <% elsif orden_trabajo.priority == "Media"  %>
                 <td  style="background-color:#FFFF00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
-              <% else orden_trabajo.priority.include? "Baja" %>
+              <% else orden_trabajo.priority == "Baja" %>
                 <td  style="background-color:#7CFC00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
             <% end %>
             <td><%= orden_trabajo.clinom %></td>
@@ -60,11 +60,11 @@
         <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos).include? "Buv" %>
           <tr>
 
-            <% if orden_trabajo.priority.include? "Alta" %>
+            <% if orden_trabajo.priority == "Alta" %>
                 <td style="background-color: #FF0000"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
-              <% elsif orden_trabajo.priority.include? "Media"  %>
+              <% elsif orden_trabajo.priority == "Media"  %>
                 <td  style="background-color:#FFFF00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
-              <% else orden_trabajo.priority.include? "Baja" %>
+              <% else orden_trabajo.priority == "Baja" %>
                 <td  style="background-color:#7CFC00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
             <% end %>
 
