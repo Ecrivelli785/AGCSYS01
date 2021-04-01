@@ -31,7 +31,13 @@
         <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos).include? "Zechini" %>
 
           <tr>
-            <td><strong><%= orden_trabajo.trnum %></strong></td>
+        <% if orden_trabajo.priority.eql? "Alta" %>
+                <td style="background-color: #FF0000"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% elsif orden_trabajo.priority.eql? "Media"  %>
+                <td  style="background-color:#FFFF00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% else orden_trabajo.priority.eql? "Baja" %>
+                <td  style="background-color:#7CFC00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+            <% end %>
             <td><%= orden_trabajo.clinom %></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
             <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
@@ -61,7 +67,13 @@
 
 
           <tr>
-            <td><strong><%= orden_trabajo.trnum %></strong></td>
+        <% if orden_trabajo.priority.eql? "Alta" %>
+                <td style="background-color: #FF0000"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% elsif orden_trabajo.priority.eql? "Media"  %>
+                <td  style="background-color:#FFFF00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% else orden_trabajo.priority.eql? "Baja" %>
+                <td  style="background-color:#7CFC00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+            <% end %>
             <td><%= orden_trabajo.clinom %></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
             <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
@@ -92,7 +104,13 @@
 
 
           <tr>
-            <td><strong><%= orden_trabajo.trnum %></strong></td>
+        <% if orden_trabajo.priority.eql? "Alta" %>
+                <td style="background-color: #FF0000"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% elsif orden_trabajo.priority.eql? "Media"  %>
+                <td  style="background-color:#FFFF00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% else orden_trabajo.priority.eql? "Baja" %>
+                <td  style="background-color:#7CFC00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+            <% end %>
             <td><%= orden_trabajo.clinom %></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
             <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>

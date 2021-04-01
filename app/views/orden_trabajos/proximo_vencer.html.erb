@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-    <% @orden_trabajos.limit(30).each do |orden_trabajo| %>
+    <% @orden_trabajos.limit(35).each do |orden_trabajo| %>
           <tr>
           <%= simple_form_for (orden_trabajo), html: { data: { action: "ajax:success->form#onPostSuccess" } }  do |f| %>
 
