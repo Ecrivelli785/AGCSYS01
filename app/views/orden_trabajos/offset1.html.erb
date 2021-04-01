@@ -8,30 +8,41 @@
       </div>
 </div>
 
+<p><%=   %></p>
+
 
 <div class="d-flex justify-content-around">
   <div class="container">
       <table class="table table-striped">
       <thead>
-        <tr class="bg-danger">
+        <tr class="bg-dark">
           <th><h4 class="font-weight-bold text-white">OT</h4></th>
           <th><h4 class="font-weight-bold text-white">Cliente</h4></th>
           <th><h4 class="font-weight-bold text-white">Cantidad</h4></th>
           <th><h4 class="font-weight-bold text-white">Color</h4></th>
           <th><h4 class="font-weight-bold text-white">Observación</h4></th>
           <th><h4 class="font-weight-bold text-white"> Fecha límite</h4></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
     <% @orden_trabajos.each do |orden_trabajo| %>
         <% if orden_trabajo.estado_actual == "Impresión" and cadenatovector(orden_trabajo.procesos).include? "SM" %>
           <tr>
-            <td><strong><%= orden_trabajo.trnum %></strong></td>
-            <td><%= orden_trabajo.clinom %></td>
+
+              <% if orden_trabajo.priority.eql? "Alta" %>
+                <td style="background-color: #FF0000"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% elsif orden_trabajo.priority.eql? "Media"  %>
+                <td  style="background-color:#FFFF00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% else orden_trabajo.priority.eql? "Baja" %>
+                <td  style="background-color:#7CFC00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+            <% end %>
+
+            <td><strong><%= orden_trabajo.clinom %></strong></td>
             <td><%= orden_trabajo.trcan %> </td>
             <td><%= orden_trabajo.colores %> </td>
             <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
-            <td><%= orden_trabajo.deadline %></td>
+            <td><strong><%= orden_trabajo.deadline %> </strong></td>
             <td>
         <% end %>
       <% end %>
@@ -42,7 +53,7 @@
     <div class="container">
       <table class="table table-striped">
       <thead>
-        <tr class="bg-danger">
+        <tr class="bg-dark">
           <th><h4 class="font-weight-bold text-white">OT</h4></th>
           <th><h4 class="font-weight-bold text-white">Cliente</h4></th>
           <th><h4 class="font-weight-bold text-white">Cantidad</h4></th>
@@ -56,15 +67,20 @@
 
 
     <% if orden_trabajo.estado_actual == "Impresión" and cadenatovector(orden_trabajo.procesos).include? "PM" %>
-
-
           <tr>
-            <td><strong><%= orden_trabajo.trnum %></strong></td>
+              <% if orden_trabajo.priority.eql? "Alta" %>
+                <td style="background-color: #FF0000"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% elsif orden_trabajo.priority.eql? "Media"  %>
+                <td  style="background-color:#FFFF00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% else orden_trabajo.priority.eql? "Baja" %>
+                <td  style="background-color:#7CFC00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+            <% end %>
             <td><%= orden_trabajo.clinom %></td>
             <td><%= orden_trabajo.trcan %> </td>
             <td><%= orden_trabajo.colores %> </td>
             <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
-            <td> <%= orden_trabajo.deadline %></td>
+            <td><strong><%= orden_trabajo.deadline %> </strong></td>
+
           <% end %>
         <% end %>
         </tr>
@@ -84,7 +100,6 @@
 setInterval(function(){
 
 //time to scroll to bottom
-
   $("html, body").animate({scrollTop: $(document).height()},70000);
 
 //scroll to top
@@ -94,10 +109,11 @@ setTimeout(function () {
 },1)//call every 2000 miliseconds
 
 setTimeout(function () {
-//    //Redirect with JavaScript
+   //Redirect with JavaScript
    window.location.href= 'http://planillaot.herokuapp.com/offset2';
 
 },  30000);
 ;
+
 
 </script>

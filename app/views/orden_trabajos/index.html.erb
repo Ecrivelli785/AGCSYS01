@@ -1,3 +1,4 @@
+
 <p id="notice"><%= notice %></p>
 <div class="d-flex justify-content-between mr-5 ml-2">
   <div class="ml-3 mb-2"><h3>Planilla de control   : <button type="button" class="btn-sm btn-dark"><strong><%= @contador %></strong></button></h3> </div>
@@ -29,6 +30,7 @@
       <th>Producto</th>
       <th>Cantidad</th>
       <th>Estado actual</th>
+      <th>Estado actual</th>
       <th>Proceso</th>
       <th>Fecha entrega</th>
       <th>Observaciones</th>
@@ -49,9 +51,10 @@
             <td><%= orden_trabajo.nomprod.first(30)%></td>
             <td> <%= orden_trabajo.trcan  %> </td>
             <td>
-              <%= f.input :estado_actual, as: :select, :collection => ["Pendiente", "Diego diseño", "Ismael diseño", "Edu diseño", "Miguel diseño", "Santiago diseño", "Control", "CTP", "Impresión", "Terminación", "Empaque"], label: false, :default=> "Pendiente" %>
+              <%= f.input :estado_actual, as: :select, :collection => ["Pendiente", "Diego diseño", "Ismael diseño", "Edu diseño", "Miguel diseño", "Diseño 3ro", "Control", "CTP", "Impresión", "Terminación", "Empaque"], label: false, :default=> "Pendiente" %>
             </td>
             <td>
+
               <script>
                 // Multiselect dropdown orden_trabajo.post -->
                 $(document).ready(function() {
@@ -131,3 +134,4 @@ function topFunction() {
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 </script>
+

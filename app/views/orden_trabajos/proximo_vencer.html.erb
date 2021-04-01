@@ -6,20 +6,34 @@
           <th>OT</th>
           <th>Cliente</th>
           <th>Producto</th>
-          <th>Observación</th>
           <th>Fecha Entrega</th>
+          <th>Prioridad</th>
+          <th colspan="3"></th>
         </tr>
       </thead>
       <tbody>
-    <% @orden_trabajos.limit(30).each do |orden_trabajo| %>
+    <% @orden_trabajos.limit(35).each do |orden_trabajo| %>
           <tr>
-            <td> <%= orden_trabajo.trnum %></td>
+          <%= simple_form_for (orden_trabajo), html: { data: { action: "ajax:success->form#onPostSuccess" } }  do |f| %>
+
+
+              <% if orden_trabajo.priority.eql? "Alta" %>
+                <td style="background-color: #FF0000"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% elsif orden_trabajo.priority.eql? "Media"  %>
+                <td  style="background-color:#FFFF00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% else orden_trabajo.priority.eql? "Baja" %>
+                <td  style="background-color:#7CFC00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+            <% end %>
+
             <td><%= orden_trabajo.clinom %></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
-            <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
-            <td><%= orden_trabajo.deadline %></td>
+            <td><strong><%= orden_trabajo.deadline %> </strong> </td>
+            <td><%= f.input :priority, as: :select, :collection => ["Alta","Media","Baja"], label: false %></td>
+            <td><%= f.button :submit, name="Confirmar",data: { disable_with: 'ok' }, :class => "btn btn-primary", input_html: { data: {action: "input->filter#update propertychange->filter#update"}}%></td>
             <td>
         <% end %>
+        <% end %>
+
         </tr>
       </tbody>
     </table>
