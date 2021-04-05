@@ -66,6 +66,7 @@
           <th>Cliente</th>
           <th>Producto</th>
           <th>Observación</th>
+          <th>Prioridad</th>
           <th>Fecha Entrega</th>
         </tr>
       </thead>
@@ -76,6 +77,7 @@
             <td><%= orden_trabajo.clinom %></td>
             <td><%= orden_trabajo.nomprod.first(20) %></td>
             <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
+            <td><%= orden_trabajo.priority %></td>
             <td><%= orden_trabajo.deadline %></td>
             <td>
         <% end %>
