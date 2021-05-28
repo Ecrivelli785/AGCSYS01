@@ -34,7 +34,8 @@
       <th>Estado Actual</th>
       <th>Procesos</th>
       <th>Observaciones</th>
-      <th>Fecha entrega</th>
+      <th>Fecha ingreso</th>
+      <th><strong>Fecha prometida</strong> </th>
       </tr>
   </thead>
 
@@ -49,6 +50,7 @@
         <th> <%= orden_trabajo.estado_actual %> </th>
         <td><%= orden_trabajo.procesos %></td>
         <td><%= truncate(orden_trabajo.observaciones)%></td>
+        <td><%= orden_trabajo.trcar.try(:strftime, ("%e %B")) %></td>
         <td><strong><%= orden_trabajo.deadline.try(:strftime, ('%d-%m'))%></strong></td>
       </tr>
     <% end %>
