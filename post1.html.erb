@@ -1,0 +1,109 @@
+
+<div class="d-flex justify-content-around bg-primary sticky-top my-3">
+       <div class="">
+        <h1 class="mt-1 "><strong>Laminado</strong></h1>
+      </div>
+       <div class="">
+        <h1 class="mt-1 "><strong>Buv</strong></h1>
+       </div>
+</div>
+
+
+<div class="d-flex justify-content-around">
+  <div class="container">
+      <table class="table table-striped">
+      <thead>
+        <tr class="bg-dark">
+          <th><h4 class="font-weight-bold text-white">OT</h4></th>
+          <th><h4 class="font-weight-bold text-white">Cliente</h4></th>
+          <th><h4 class="font-weight-bold text-white">Producto</h4></th>
+          <th><h4 class="font-weight-bold text-white">Observación</h4></th>
+          <th><h4 class="font-weight-bold text-white"> Fecha límite</h4></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+    <% @orden_trabajos.each do |orden_trabajo| %>
+        <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos) == "Lam" %>
+          <tr>
+             <% if orden_trabajo.priority == "Alta" %>
+                <td style="background-color: #FF0000"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% elsif orden_trabajo.priority == "Media"  %>
+                <td  style="background-color:#FFFF00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% else orden_trabajo.priority == "Baja" %>
+                <td  style="background-color:#7CFC00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+            <% end %>
+            <td><%= orden_trabajo.clinom %></td>
+            <td><%= orden_trabajo.nomprod.first(20) %></td>
+            <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
+            <td><strong><%= orden_trabajo.deadline %> </strong></td>
+            <td>
+        <% end %>
+      <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    <div class="container">
+      <table class="table table-striped">
+      <thead>
+        <tr class="bg-dark">
+          <th><h4 class="font-weight-bold text-white">OT</h4></th>
+          <th><h4 class="font-weight-bold text-white">Cliente</h4></th>
+          <th><h4 class="font-weight-bold text-white">Producto</h4></th>
+          <th><h4 class="font-weight-bold text-white">Observación</h4></th>
+          <th><h4 class="font-weight-bold text-white"> Fecha límite</h4></th>
+        </tr>
+      </thead>
+      <tbody>
+    <% @orden_trabajos.each do |orden_trabajo| %>
+        <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos).include? "Buv" %>
+          <tr>
+
+            <% if orden_trabajo.priority == "Alta" %>
+                <td style="background-color: #FF0000"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% elsif orden_trabajo.priority == "Media"  %>
+                <td  style="background-color:#FFFF00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+              <% else orden_trabajo.priority == "Baja" %>
+                <td  style="background-color:#7CFC00"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
+            <% end %>
+
+            <td><%= orden_trabajo.clinom %></td>
+            <td><%= orden_trabajo.nomprod.first(20) %></td>
+            <td><%= truncate(orden_trabajo.observaciones, :length => 50)%></td>
+            <td><strong><%= orden_trabajo.deadline %> </strong></td>
+
+          <% end %>
+        <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+//Using setTimeout to execute a function after 5 seconds.
+
+
+//scroll to bottom
+setInterval(function(){
+
+//time to scroll to bottom
+
+  $("html, body").animate({scrollTop: $(document).height()},70000);
+
+    //scroll to top
+setTimeout(function () {
+  $('html, body').animate({scrollTop:0},1);
+},1);//call every 2000 miliseconds
+},1)//call every 2000 miliseconds
+
+setTimeout(function () {
+//    //Redirect with JavaScript
+   window.location.href= 'http://planillaot.herokuapp.com/post2';
+
+},  25000);
+;
+
+
+</script>
