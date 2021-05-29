@@ -24,7 +24,7 @@
       </thead>
       <tbody>
     <% @orden_trabajos.each do |orden_trabajo| %>
-        <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos) == "Lam" %>
+        <% if orden_trabajo.estado_actual == "Terminación" and cadenatovector(orden_trabajo.procesos).include? "Lam" %>
           <tr>
              <% if orden_trabajo.priority == "Alta" %>
                 <td style="background-color: #FF0000"> <strong><%= orden_trabajo.trnum %> </strong>  </td>
