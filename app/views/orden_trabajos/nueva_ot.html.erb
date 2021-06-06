@@ -1,0 +1,33 @@
+<h1 class="m-3 bg-primary text-center p-1 text-white"><strong>Nuevas ordenes de trabajo</strong></h1>
+
+<div class="container">
+      <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>OT</th>
+          <th>Cliente</th>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Papel</th>
+          <th>Estado</th>
+          <th>Fecha ingreso</th>
+
+        </tr>
+      </thead>
+      <tbody>
+    <% @orden_trabajos.each do |orden_trabajo| %>
+          <tr>
+            <td><%= orden_trabajo.trnum %></td>
+            <td><%= orden_trabajo.clinom %></td>
+            <td><%= orden_trabajo.nomprod.first(30) %></td>
+            <td><%= orden_trabajo.trcan %></td>
+            <td><strong><%= orden_trabajo.papel %></strong></td>
+            <td><%= orden_trabajo.estado_actual %></td>
+            <td><%= orden_trabajo.trcar %></td>
+
+            <td>
+        <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>

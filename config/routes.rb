@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'proximo_vencer', to: 'orden_trabajos#proximo_vencer', as: :proximo_vencer
   get 'planificacionTaller', to: 'orden_trabajos#planificacionTaller', as: :planificacionTaller
   get 'planificacionTallerPDF', to: 'orden_trabajos#planificacionTallerPDF', as: :planificacionTallerPDF
+  get 'nueva_ot', to: 'orden_trabajos#nueva_ot', as: :nueva_ot
+  
 
 
   # Rutas creadas para cada pantalla
