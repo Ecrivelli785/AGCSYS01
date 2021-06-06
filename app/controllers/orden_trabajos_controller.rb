@@ -147,7 +147,7 @@ end
 
 # lISTADO DE LOS TRABAJOS QUE ENTRARON EN LOS ÙLTIMOS 3 DÌAS
 def nueva_ot
-  @orden_trabajos = OrdenTrabajo.order('trcar DESC').first(20)
+  @orden_trabajos = OrdenTrabajo.order('trcar DESC NULLS LAST').first(25)
 end
 # FIN lISTADO DE LOS TRABAJOS QUE ENTRARON EN LOS ÙLTIMOS 3 DÌAS
 
