@@ -9,8 +9,10 @@
           <th>Producto</th>
           <th>Cantidad</th>
           <th>Papel</th>
+          <th>Gramaje</th>
           <th>Estado</th>
-          <th>Fecha ingreso</th>
+          <th>Fecha Ingreso</th>
+          <th>Fecha Prometida</th>
 
         </tr>
       </thead>
@@ -18,13 +20,14 @@
     <% @orden_trabajos.each do |orden_trabajo| %>
           <tr>
             <td><%= orden_trabajo.trnum %></td>
-            <td><%= orden_trabajo.clinom %></td>
+            <td><%= link_to "#{orden_trabajo.clinom}", orden_trabajo_path(orden_trabajo)%></td>
             <td><%= orden_trabajo.nomprod.first(30) %></td>
             <td><%= orden_trabajo.trcan %></td>
             <td><strong><%= orden_trabajo.papel %></strong></td>
+            <td><strong><%= orden_trabajo.gramaje %></strong></td>
             <td><%= orden_trabajo.estado_actual %></td>
-            <td><%= orden_trabajo.trcar %></td>
-
+            <td><%= orden_trabajo.trcar.try(:strftime, ("%e %B")) %></td>
+            <td><%= orden_trabajo.deadline.try(:strftime, ("%e %B")) %></td>
             <td>
         <% end %>
         </tr>
