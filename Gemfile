@@ -1,18 +1,18 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '3.4.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
+gem 'rails', '~> 7.1.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 6.1'
 # Use SCSS for stylesheets
-gem 'sass-rails', '>= 6'
+
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker'
+
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -24,10 +24,12 @@ gem 'mini_racer'
 
 
 gem 'simple_form', '~> 5.0', '>= 5.0.3'
-gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+gem 'bootstrap', '~> 5.3'
+gem 'sassc-rails'
 
-gem 'wicked_pdf', '~> 2.1'
-gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
+
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -63,6 +65,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #gema importacion excel a bd
 
-gem "roo", "~> 2.7.0"
-gem 'axlsx', '~> 2.1.0.pre'
-gem 'axlsx_rails'
+gem "roo"
+gem 'axlsx'
+gem 'caxlsx_rails'
+gem 'csv'
+gem 'json'
+gem 'openssl'
+gem "importmap-rails"
